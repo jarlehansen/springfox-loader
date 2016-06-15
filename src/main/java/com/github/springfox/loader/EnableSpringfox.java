@@ -12,5 +12,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Import({Swagger2DocumentationConfiguration.class})
 public @interface EnableSpringfox {
-
+    String title() default "";
+    String description() default "";
+    String version() default "";
+    String termsOfServiceUtl() default "";
+    String contactName() default "";
+    String contactUrl() default "";
+    String license() default "";
+    String licenseUrl() default "";
 }
