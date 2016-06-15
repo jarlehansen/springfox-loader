@@ -36,13 +36,13 @@ __Configuration options:__
  * description
  * version
  * termsOfServiceUrl
- * @Contact
-  * name
-  * url
-  * email
- * license
-  * name
-  * url
+* @Contact
+ * name
+ * url
+ * email
+* @License
+ * name
+ * url
 
 ### Properties
 
