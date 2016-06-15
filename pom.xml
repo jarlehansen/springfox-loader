@@ -33,6 +33,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
@@ -45,6 +46,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
 
@@ -107,12 +109,8 @@
 
     <repositories>
         <repository>
-            <id>Spring release</id>
-            <url>http://repo.spring.io/release/</url>
-        </repository>
-        <repository>
-            <id>central</id>
-            <url>http://repo1.maven.org/maven2</url>
+            <id>spring-releases</id>
+            <url>http://repo.spring.io/release</url>
         </repository>
         <repository>
             <id>jcenter</id>
