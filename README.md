@@ -79,7 +79,7 @@ For example springfox.path.
 
 If both the annotation values and properties values are defined the values from the properties/yml-file is used.
 
-__Property keys__
+__Application properties__
 * springfox.path
 * spring.application.name _or_ springfox.title
 * springfox.description
