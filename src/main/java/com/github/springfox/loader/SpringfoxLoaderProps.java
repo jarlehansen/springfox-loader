@@ -21,7 +21,7 @@ public class SpringfoxLoaderProps {
     @Value("${springfox.version:}")
     private String version;
 
-    @Value("${springfox.terms-of-service-url:")
+    @Value("${springfox.terms-of-service-url:}")
     private String termsOfServiceUrl;
 
     @Value("${springfox.contact-name:}")
@@ -30,7 +30,7 @@ public class SpringfoxLoaderProps {
     @Value("${springfox.contact-url:}")
     private String contactUrl;
 
-    @Value("${springfox.contact-email:")
+    @Value("${springfox.contact-email:}")
     private String contactEmail;
 
     @Value("${springfox.license:}")

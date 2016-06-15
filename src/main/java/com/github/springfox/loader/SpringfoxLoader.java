@@ -15,8 +15,11 @@ class SpringfoxLoader {
     SpringfoxLoader() {
     }
 
-    SpringfoxLoader(SpringfoxLoaderProps loaderProps, ApplicationContext applicationContext) {
+    void setSpringfoxLoaderProps(SpringfoxLoaderProps loaderProps) {
         this.loaderProps = loaderProps;
+    }
+
+    void setApplicationContext(ApplicationContext applicationContext) {
         this.annotation = getAnnotation(applicationContext);
     }
 
