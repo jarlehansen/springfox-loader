@@ -32,21 +32,6 @@ This will automatically create the springfox configuration for you.
 It is also possible to add Spring placeholders (with the `${...}` syntax) as values.
 This can be useful if you want to add values that are defined in for example properties/yml files.
 
-__Configuration options:__
-* path - Servlet path mapping
-* @Info
- * title
- * description
- * version
- * termsOfServiceUrl
-* @Contact
- * name
- * url
- * email
-* @License
- * name
- * url
-
  __Example__
  ```java
 @EnableSpringfox(
@@ -64,6 +49,22 @@ __Configuration options:__
          contact = @Contact(name = "name", url = "url", email = "email"),
          license = @License(name = "name", url = "url")))
 ```
+
+__Configuration options:__
+* path - Servlet path mapping
+* @Info
+ * title
+ * description
+ * version
+ * termsOfServiceUrl
+* @Contact
+ * name
+ * url
+ * email
+* @License
+ * name
+ * url
+
 
 ### Properties
 
