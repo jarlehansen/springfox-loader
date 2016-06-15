@@ -44,6 +44,24 @@ __Configuration options:__
  * name
  * url
 
+ __Example__
+ ```java
+@EnableSpringfox(
+        @Info(title = "title", version = "${version}")
+)
+ ```
+
+ __Complete example__
+```java
+@EnableSpringfox(@Info(
+         title = "title",
+         version = "${version}",
+         description = "description",
+         termsOfService = "termsOfService",
+         contact = @Contact(name = "name", url = "url", email = "email"),
+         license = @License(name = "name", url = "url")))
+```
+
 ### Properties
 
 It is also possible to configure the values using properties/yml files (typically application.properties/application.yml).
