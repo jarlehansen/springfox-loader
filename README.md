@@ -71,22 +71,6 @@ This can be useful if you want to add values that are defined in for example pro
  )
 ```
 
-__Configuration options:__
-* path - Servlet path mapping
-* @Info
- * title
- * description
- * version
- * termsOfServiceUrl
-* @Contact
- * name
- * url
- * email
-* @License
- * name
- * url
-
-
 ### Properties
 
 It is also possible to configure the values using properties/yml files (typically application.properties/application.yml).
