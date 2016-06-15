@@ -108,3 +108,4 @@ public void init() {
 
 ### References
 * [Springfox Reference Documentation](http://springfox.github.io/springfox/docs/current/)
+* [Swagger Core Annotations](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X)
