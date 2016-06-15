@@ -32,14 +32,13 @@ This will automatically create the springfox configuration for you.
 It is also possible to add Spring placeholders (with the `${...}` syntax) as values in the EnableSpringfox-annotation.
 This can be useful if you want to add values that are defined in for example properties/yml files.
 
- __Example__
+ __Examples__
  ```java
 @EnableSpringfox(
         @Info(title = "title", version = "${version}")
 )
  ```
 
- __Complete example__
 ```java
 @EnableSpringfox(@Info(
          title = "title",
@@ -47,7 +46,8 @@ This can be useful if you want to add values that are defined in for example pro
          description = "description",
          termsOfService = "termsOfService",
          contact = @Contact(name = "name", url = "url", email = "email"),
-         license = @License(name = "name", url = "url")))
+         license = @License(name = "name", url = "url"))
+ )
 ```
 
 __Configuration options:__
@@ -85,6 +85,21 @@ __Property keys__
 * springfox.contact.email
 * springfox.license.name
 * springfox.license.url
+
+
+### Custom options
+If there are options that are available in Springfox, but not the Springfox-loader it is possible to add it manually.
+You can simply autowire the [Docket-object](http://springfox.github.io/springfox/javadoc/current/springfox/documentation/spring/web/plugins/Docket.html) and can alter the setup as needed.
+
+```java
+@Autowired
+private Docket docket;
+
+@PostConstruct
+public void init() {
+    docket.apiInfo(new ApiInfo("My new title", "", "1.0.0.", "", new Contact("", "", ""), "", ""));
+}
+```
 
 ### References
 * [Springfox Reference Documentation](http://springfox.github.io/springfox/docs/current/)
