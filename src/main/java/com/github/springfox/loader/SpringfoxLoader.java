@@ -1,5 +1,6 @@
 package com.github.springfox.loader;
 
+import io.swagger.annotations.License;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.util.StringValueResolver;
@@ -42,34 +43,37 @@ class SpringfoxLoader {
     }
 
     String getTitle() {
-        return val(annotation.title(), loaderProps.getTitle());
+        return val(annotation.value().title(), loaderProps.getTitle());
     }
 
     String getDescription() {
-        return val(annotation.description(), loaderProps.getDescription());
+        return val(annotation.value().description(), loaderProps.getDescription());
     }
 
     String getVersion() {
-        return val(annotation.version(), loaderProps.getVersion());
+        return val(annotation.value().version(), loaderProps.getVersion());
     }
 
     String getTermsOfServiceUrl() {
-        return val(annotation.termsOfServiceUrl(), loaderProps.getTermsOfServiceUrl());
+        return val(annotation.value().termsOfService(), loaderProps.getTermsOfServiceUrl());
     }
 
     Contact getContact() {
-        String name = val(annotation.contactName(), loaderProps.getContactName());
-        String url = val(annotation.contactUrl(), loaderProps.getContactUrl());
-        String email = val(annotation.contactEmail(), loaderProps.getContactEmail());
+        io.swagger.annotations.Contact contact = annotation.value().contact();
+        String name = val(contact.name(), loaderProps.getContactName());
+        String url = val(contact.url(), loaderProps.getContactUrl());
+        String email = val(contact.email(), loaderProps.getContactEmail());
         return new Contact(name, url, email);
     }
 
     String getLicense() {
-        return val(annotation.license(), loaderProps.getLicense());
+        License license = annotation.value().license();
+        return val(license.name(), loaderProps.getLicense());
     }
 
     String getLicenseUrl() {
-        return val(annotation.licenseUrl(), loaderProps.getLicenseUrl());
+        License license = annotation.value().license();
+        return val(license.url(), loaderProps.getLicenseUrl());
     }
 
     String val(String annotation, String prop) {

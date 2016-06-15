@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/jarlehansen/springfox-loader.svg?branch=master)](https://travis-ci.org/jarlehansen/springfox-loader)
 
 Simplifies the initialization of [Springfox](http://springfox.io/).
+It does not offer all the flexibility and configuration options available in Springfox, but is meant as a simple way to
+get swagger up and running without the need for a lot of configuration.
 
 ## Installation
 

@@ -1,5 +1,7 @@
 package com.github.springfox.loader
 
+import io.swagger.annotations.Contact
+import io.swagger.annotations.Info
 import org.springframework.context.ApplicationContext
 import org.springframework.util.StringValueResolver
 import spock.lang.Specification
@@ -23,17 +25,22 @@ class SpringfoxLoaderSpec extends Specification {
         given:
         def loaderProps = Mock(SpringfoxLoaderProps)
         def annotation = Mock(EnableSpringfox)
+        def infoAnnotation = Mock(Info)
+        def contactAnnotation = Mock(Contact)
         def springfoxLoader = new SpringfoxLoader(loaderProps: loaderProps, annotation: annotation)
 
         when:
         def contact = springfoxLoader.getContact()
 
         then:
-        1 * annotation.contactName() >> ""
+        1 * annotation.value() >> infoAnnotation
+        1 * infoAnnotation.contact() >> contactAnnotation
+
+        1 * contactAnnotation.name() >> ""
         1 * loaderProps.getContactName() >> "contact-name"
-        1 * annotation.contactUrl() >> ""
+        1 * contactAnnotation.url() >> ""
         1 * loaderProps.getContactUrl() >> "contact-url"
-        1 * annotation.contactEmail() >> "contact-email"
+        1 * contactAnnotation.email() >> "contact-email"
         1 * loaderProps.getContactEmail() >> ""
 
         contact.name == "contact-name"

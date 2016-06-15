@@ -1,5 +1,6 @@
 package com.github.springfox.loader;
 
+import io.swagger.annotations.Info;
 import org.springframework.context.annotation.Import;
 import springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration;
 
@@ -12,23 +13,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Import({SpringfoxLoaderConfiguration.class, SpringfoxLoaderProps.class, Swagger2DocumentationConfiguration.class})
 public @interface EnableSpringfox {
-    String path() default "/";
-
-    String title() default "";
-
-    String description() default "";
-
-    String version() default "";
-
-    String termsOfServiceUrl() default "";
-
-    String contactName() default "";
-
-    String contactUrl() default "";
-
-    String contactEmail() default "";
-
-    String license() default "";
-
-    String licenseUrl() default "";
+    String path() default "";
+    Info value() default @Info(title = "", version = "");
 }
