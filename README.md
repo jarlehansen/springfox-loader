@@ -32,17 +32,17 @@ This will automatically create the springfox configuration for you.
 __Configuration options:__
 * path - Servlet path mapping
 * @Info
-..* title
-..* description
-..* version
-..* termsOfServiceUrl
-..* @Contact
-...* name
-...* url
-...* email
-..* license
-...* name
-...* url
+ * title
+ * description
+ * version
+ * termsOfServiceUrl
+ * @Contact
+  * name
+  * url
+  * email
+ * license
+  * name
+  * url
 
 ### Properties
 
