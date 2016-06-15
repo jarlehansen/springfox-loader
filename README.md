@@ -30,16 +30,19 @@ Add `@EnableSpringfox` to the class containing the Spring boot main method (`@Sp
 This will automatically create the springfox configuration for you.
 
 __Configuration options:__
-* path - The path
-* title -
-* description
-* version
-* termsOfServiceUrl
-* contactName
-* contactUrl
-* contactEmail
-* license
-* licenseUrl
+* path - Servlet path mapping
+* @Info
+..* title
+..* description
+..* version
+..* termsOfServiceUrl
+..* @Contact
+...* name
+...* url
+...* email
+..* license
+...* name
+...* url
 
 ### Properties
 
@@ -51,7 +54,7 @@ If both the annotation values and properties values are defined the values from 
 
 __Property keys__
 * springfox.path
-* spring.application.name / springfox.title
+* spring.application.name _or_ springfox.title
 * springfox.description
 * springfox.version
 * springfox.terms-of-service-url
