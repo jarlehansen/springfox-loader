@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringfoxLoaderProps {
 
-    @Value("${springfox.path:")
+    @Value("${springfox.path:}")
     private String path;
 
 
-    @Value("${spring.application.name}")
+    @Value("${spring.application.name:}")
     private String name;
     @Value("${springfox.title:}")
     private String title;
