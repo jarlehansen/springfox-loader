@@ -10,20 +10,19 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SpringfoxLoaderConfiguration implements ApplicationContextAware {
     @Autowired
-    private SpringfoxLoaderValues springfoxLoaderValues;
+    private SpringfoxLoaderProps loaderProps;
 
     private SpringfoxLoader springfoxLoader;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        springfoxLoader = new SpringfoxLoader(springfoxLoaderValues, applicationContext);
+        springfoxLoader = new SpringfoxLoader(loaderProps, applicationContext);
     }
 
     @Bean
@@ -34,10 +33,11 @@ public class SpringfoxLoaderConfiguration implements ApplicationContextAware {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())
-                .pathMapping("/");
+                .pathMapping(springfoxLoader.getPath());
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfo("", "", "", "", new Contact("", "", ""), "", "");
+        return new ApiInfo(springfoxLoader.getTitle(), springfoxLoader.getDescription(), springfoxLoader.getVersion(),
+                springfoxLoader.getTermsOfServiceUrl(), springfoxLoader.getContact(), springfoxLoader.getLicense(), springfoxLoader.getLicenseUrl());
     }
 }

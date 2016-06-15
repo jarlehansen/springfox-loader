@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import({SpringfoxLoaderConfiguration.class, SpringfoxLoaderValues.class, Swagger2DocumentationConfiguration.class})
+@Import({SpringfoxLoaderConfiguration.class, SpringfoxLoaderProps.class, Swagger2DocumentationConfiguration.class})
 public @interface EnableSpringfox {
     String path() default "/";
 
@@ -25,6 +25,8 @@ public @interface EnableSpringfox {
     String contactName() default "";
 
     String contactUrl() default "";
+
+    String contactEmail() default "";
 
     String license() default "";
 

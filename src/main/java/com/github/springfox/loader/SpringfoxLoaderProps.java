@@ -4,47 +4,50 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SpringfoxLoaderValues {
+public class SpringfoxLoaderProps {
 
-    @Value("${springfox.path")
+    @Value("${springfox.path:")
     private String path;
 
+
     @Value("${spring.application.name}")
-    private String appName;
+    private String name;
+    @Value("${springfox.title:}")
+    private String title;
 
-    @Value("${springfox.name}")
-    private String springfoxName;
-
-    @Value("${springfox.description}")
+    @Value("${springfox.description:}")
     private String description;
 
-    @Value("${springfox.version}")
+    @Value("${springfox.version:}")
     private String version;
 
-    @Value("${springfox.terms-of-service-url")
+    @Value("${springfox.terms-of-service-url:")
     private String termsOfServiceUrl;
 
-    @Value("${springfox.contact-name}")
+    @Value("${springfox.contact-name:}")
     private String contactName;
 
-    @Value("${springfox.contact-url}")
+    @Value("${springfox.contact-url:}")
     private String contactUrl;
 
-    @Value("${springfox.license}")
+    @Value("${springfox.contact-email:")
+    private String contactEmail;
+
+    @Value("${springfox.license:}")
     private String license;
 
-    @Value("${springfox.license-url}")
+    @Value("${springfox.license-url:}")
     private String licenseUrl;
 
     public String getPath() {
         return path;
     }
 
-    public String getName() {
-        if(springfoxName == null) {
-            return appName;
+    public String getTitle() {
+        if (name == null) {
+            return title;
         } else {
-            return springfoxName;
+            return name;
         }
     }
 
@@ -66,6 +69,10 @@ public class SpringfoxLoaderValues {
 
     public String getContactUrl() {
         return contactUrl;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
     }
 
     public String getLicense() {
