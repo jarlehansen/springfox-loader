@@ -47,4 +47,16 @@ It is also possible to configure the values using properties/yml files (typicall
 On startup it will try to lookup the same configuration options as described above with 'springfox.' as a prefix.
 For example springfox.path.
 
-If both the annotation values and properties values are defined,
+If both the annotation values and properties values are defined the values from the properties/yml-file is used.
+
+__Property keys__
+* springfox.path
+* spring.application.name / springfox.title
+* springfox.description
+* springfox.version
+* springfox.terms-of-service-url
+* springfox.contact.name
+* springfox.contact.url
+* springfox.contact.email
+* springfox.license.name
+* springfox.license.url

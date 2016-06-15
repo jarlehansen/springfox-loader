@@ -24,19 +24,19 @@ public class SpringfoxLoaderProps {
     @Value("${springfox.terms-of-service-url:}")
     private String termsOfServiceUrl;
 
-    @Value("${springfox.contact-name:}")
+    @Value("${springfox.contact.name:}")
     private String contactName;
 
-    @Value("${springfox.contact-url:}")
+    @Value("${springfox.contact.url:}")
     private String contactUrl;
 
-    @Value("${springfox.contact-email:}")
+    @Value("${springfox.contact.email:}")
     private String contactEmail;
 
-    @Value("${springfox.license:}")
+    @Value("${springfox.license.name:}")
     private String license;
 
-    @Value("${springfox.license-url:}")
+    @Value("${springfox.license.url:}")
     private String licenseUrl;
 
     public String getPath() {
