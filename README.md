@@ -6,12 +6,12 @@ Simplifies the initialization of [Springfox](http://springfox.io/).
 
 ## Installation
 
-build.gradle
+_build.gradle_
 ```groovy
 compile('com.github.springfox.loader:springfox-loader:version...')
 ```
 
-pom.xml
+_pom.xml_
 ```groovy
 <dependency>
     <groupId>com.github.springfox.loader</groupId>
@@ -22,5 +22,17 @@ pom.xml
 
 ## Usage
 
-Add `@EnableSpringfox` to the class containing the Spring boot main method (@SpringBootApplication).
+Add `@EnableSpringfox` to the class containing the Spring boot main method (`@SpringBootApplication`).
 This will automatically create the springfox configuration for you.
+
+__Configuration options:__
+* path
+* title
+* description
+* version
+* termsOfServiceUrl
+* contactName
+* contactUrl
+* contactEmail
+* license
+* licenseUrl
