@@ -6,6 +6,8 @@ Simplifies the initialization of [Springfox](http://springfox.io/).
 
 ## Installation
 
+The required springfox dependencies are included when you add the _Springfox Loader_ dependency.
+
 _build.gradle_
 ```groovy
 compile('com.github.springfox.loader:springfox-loader:version...')
@@ -26,8 +28,8 @@ Add `@EnableSpringfox` to the class containing the Spring boot main method (`@Sp
 This will automatically create the springfox configuration for you.
 
 __Configuration options:__
-* path
-* title
+* path - The path
+* title -
 * description
 * version
 * termsOfServiceUrl
@@ -36,3 +38,11 @@ __Configuration options:__
 * contactEmail
 * license
 * licenseUrl
+
+### Properties
+
+It is also possible to configure the values using properties/yml files (typically application.properties/application.yml).
+On startup it will try to lookup the same configuration options as described above with 'springfox.' as a prefix.
+For example springfox.path.
+
+If both the annotation values and properties values are defined,

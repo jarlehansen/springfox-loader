@@ -77,7 +77,7 @@ class SpringfoxLoader {
             annotation = stringValueResolver.resolveStringValue(annotation);
         }
 
-        return ("".equals(annotation)) ? prop : annotation;
+        return ("".equals(prop)) ? annotation : prop;
     }
 
 }

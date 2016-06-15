@@ -29,10 +29,12 @@ class SpringfoxLoaderSpec extends Specification {
         def contact = springfoxLoader.getContact()
 
         then:
-        1 * annotation.contactName() >> "contact-name"
-        1 * annotation.contactUrl() >> "contact-url"
-        1 * annotation.contactEmail() >> ""
-        1 * loaderProps.getContactEmail() >> "contact-email"
+        1 * annotation.contactName() >> ""
+        1 * loaderProps.getContactName() >> "contact-name"
+        1 * annotation.contactUrl() >> ""
+        1 * loaderProps.getContactUrl() >> "contact-url"
+        1 * annotation.contactEmail() >> "contact-email"
+        1 * loaderProps.getContactEmail() >> ""
 
         contact.name == "contact-name"
         contact.url == "contact-url"
