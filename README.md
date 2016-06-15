@@ -29,7 +29,7 @@ _pom.xml_
 Add `@EnableSpringfox` to the class containing the Spring boot main method (`@SpringBootApplication`).
 This will automatically create the springfox configuration for you.
 
-It is also possible to add Spring placeholders (with the `${...}` syntax) as values.
+It is also possible to add Spring placeholders (with the `${...}` syntax) as values in the EnableSpringfox-annotation.
 This can be useful if you want to add values that are defined in for example properties/yml files.
 
  __Example__
