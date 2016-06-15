@@ -6,6 +6,8 @@ Simplifies the initialization of [Springfox](http://springfox.io/).
 It does not offer all the flexibility and configuration options available in Springfox, but is meant as a simple way to
 get swagger up and running without the need for a lot of configuration.
 
+It is also easy to extend the library if there are configuration options from Springfox that you need.
+
 ## Installation
 
 The required springfox dependencies are included when you add the _Springfox Loader_ dependency.
