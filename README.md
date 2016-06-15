@@ -10,6 +10,8 @@ get swagger up and running without the need for a lot of configuration.
 
 The required springfox dependencies are included when you add the _Springfox Loader_ dependency.
 
+### Gradle
+
 _build.gradle_
 ```groovy
 repositories {
@@ -22,6 +24,8 @@ repositories {
 ```groovy
 compile('com.github.springfox.loader:springfox-loader:0.0.1')
 ```
+
+### Maven
 
 _pom.xml_
 ```xml
