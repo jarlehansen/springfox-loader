@@ -42,7 +42,7 @@ This can be useful if you want to add values that are defined in for example pro
 ```java
 @EnableSpringfox(@Info(
          title = "title",
-         version = "${version}",
+         version = "version",
          description = "description",
          termsOfService = "termsOfService",
          contact = @Contact(name = "name", url = "url", email = "email"),
