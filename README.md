@@ -20,7 +20,7 @@ repositories {
 ```
 
 ```groovy
-compile('com.github.springfox.loader:springfox-loader:{version}')
+compile('com.github.springfox.loader:springfox-loader:0.0.1')
 ```
 
 _pom.xml_
@@ -41,7 +41,7 @@ _pom.xml_
 <dependency>
     <groupId>com.github.springfox.loader</groupId>
     <artifactId>springfox-loader</artifactId>
-    <version>{version}</version>
+    <version>0.0.1</version>
 </dependency>
 ```
 
