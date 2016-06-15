@@ -2,6 +2,7 @@ package com.github.springfox.loader;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.util.StringValueResolver;
 import springfox.documentation.service.Contact;
 
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
 class SpringfoxLoader {
     private SpringfoxLoaderProps loaderProps;
     private EnableSpringfox annotation;
+    private StringValueResolver stringValueResolver;
 
     SpringfoxLoader() {
     }
@@ -16,6 +18,10 @@ class SpringfoxLoader {
     SpringfoxLoader(SpringfoxLoaderProps loaderProps, ApplicationContext applicationContext) {
         this.loaderProps = loaderProps;
         this.annotation = getAnnotation(applicationContext);
+    }
+
+    void setStringValueResolver(StringValueResolver stringValueResolver) {
+        this.stringValueResolver = stringValueResolver;
     }
 
     EnableSpringfox getAnnotation(ApplicationContext applicationContext) {
@@ -63,7 +69,11 @@ class SpringfoxLoader {
         return val(annotation.licenseUrl(), loaderProps.getLicenseUrl());
     }
 
-    private String val(String annotation, String prop) {
+    String val(String annotation, String prop) {
+        if (annotation.matches("\\$\\{(.*)\\}")) {
+            annotation = stringValueResolver.resolveStringValue(annotation);
+        }
+
         return ("".equals(annotation)) ? prop : annotation;
     }
 

@@ -1,6 +1,7 @@
 package com.github.springfox.loader
 
 import org.springframework.context.ApplicationContext
+import org.springframework.util.StringValueResolver
 import spock.lang.Specification
 
 class SpringfoxLoaderSpec extends Specification {
@@ -36,5 +37,29 @@ class SpringfoxLoaderSpec extends Specification {
         contact.name == "contact-name"
         contact.url == "contact-url"
         contact.email == "contact-email"
+    }
+
+    def "Get value, @Value property"() {
+        given:
+        def stringValueResolver = Mock(StringValueResolver)
+        def springfoxLoader = new SpringfoxLoader(stringValueResolver: stringValueResolver)
+
+        when:
+        def val = springfoxLoader.val('${test}', "")
+
+        then:
+        1 * stringValueResolver.resolveStringValue(_ as String) >> "test"
+        val == "test"
+    }
+
+    def "Get value, standard value"() {
+        given:
+        def springfoxLoader = new SpringfoxLoader()
+
+        when:
+        def val = springfoxLoader.val("test", "")
+
+        then:
+        val == "test"
     }
 }
