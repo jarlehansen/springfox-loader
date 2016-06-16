@@ -13,9 +13,6 @@ class SpringfoxLoader {
     private EnableSpringfox annotation;
     private StringValueResolver stringValueResolver;
 
-    SpringfoxLoader() {
-    }
-
     void setSpringfoxLoaderProps(SpringfoxLoaderProps loaderProps) {
         this.loaderProps = loaderProps;
     }

@@ -19,7 +19,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SpringfoxLoaderConfiguration implements ApplicationContextAware, EmbeddedValueResolverAware {
 
-    @Autowired
     private SpringfoxLoaderProps loaderProps;
 
     private SpringfoxLoader springfoxLoader = new SpringfoxLoader();
@@ -33,6 +32,11 @@ public class SpringfoxLoaderConfiguration implements ApplicationContextAware, Em
     @Override
     public void setEmbeddedValueResolver(StringValueResolver stringValueResolver) {
         springfoxLoader.setStringValueResolver(stringValueResolver);
+    }
+
+    @Autowired
+    public void setSpringfoxLoaderProps(SpringfoxLoaderProps loaderProps) {
+        this.loaderProps = loaderProps;
     }
 
     @Bean
