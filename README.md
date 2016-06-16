@@ -8,6 +8,11 @@ get swagger up and running without the need for a lot of configuration.
 
 It is also easy to extend the library if there are configuration options from Springfox that you need.
 
+__Features__
+* Annotation-based configuration
+* Support for standard Spring application-configuration in properties/yml files
+* Support for using Spring placeholder values (_${...}_) in the configuration
+
 ## Installation
 
 The required springfox dependencies are included when you add the _Springfox Loader_ dependency.
@@ -97,6 +102,12 @@ __Application properties__
 * springfox.license.name
 * springfox.license.url
 
+### Swagger UI
+
+The swagger-ui dependency is already included by Springfox Loader.
+After enabling Springfox Loader you can access the webpage: http://localhost:8080__/swagger-ui.html__
+
+A list of the swagger resources are available here: http://localhost:8080__/swagger-resources__
 
 ### Custom options
 If there are options that are available in Springfox, but not the Springfox-loader it is possible to add it manually.

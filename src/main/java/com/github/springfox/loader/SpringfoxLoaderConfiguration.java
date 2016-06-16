@@ -21,24 +21,16 @@ public class SpringfoxLoaderConfiguration implements ApplicationContextAware, Em
     @Autowired
     private SpringfoxLoaderProps loaderProps;
 
-    private SpringfoxLoader springfoxLoader;
+    private SpringfoxLoader springfoxLoader = new SpringfoxLoader();
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        if (springfoxLoader == null) {
-            springfoxLoader = new SpringfoxLoader();
-        }
-
         springfoxLoader.setSpringfoxLoaderProps(loaderProps);
         springfoxLoader.setApplicationContext(applicationContext);
     }
 
     @Override
     public void setEmbeddedValueResolver(StringValueResolver stringValueResolver) {
-        if (springfoxLoader == null) {
-            springfoxLoader = new SpringfoxLoader();
-        }
-
         springfoxLoader.setStringValueResolver(stringValueResolver);
     }
 
