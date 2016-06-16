@@ -64,6 +64,7 @@ The required values in the `@EnableSpringfox` is title and version (using `@Info
 
 It is also possible to add Spring placeholders (with the `${...}` syntax) as values in the annotation.
 This can be useful if you want to add values that are defined in for example properties/yml files.
+In the example below the value `${version}` can be added in for example the application.properties-file
 
  __Examples__
  ```java
