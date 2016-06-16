@@ -12,6 +12,8 @@ __Features:__
 * Support for using Spring placeholder values ${...}  in the configuration
 * Easy to extend by using the Springfox classes
 
+[Installation](#Installation)
+
 ## Installation
 
 The required springfox dependencies are included when you add the _Springfox Loader_ dependency.
