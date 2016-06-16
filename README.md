@@ -6,12 +6,11 @@ Simplifies the initialization of [Springfox](http://springfox.io/).
 It does not offer all the flexibility and configuration options available in Springfox, but is meant as a simple way to
 get swagger up and running without the need for a lot of configuration.
 
-It is also easy to extend the library if there are configuration options from Springfox that you need.
-
 __Features__
 * Annotation-based configuration
 * Support for standard Spring application-configuration in properties/yml files
 * Support for using Spring placeholder values (_${...}_) in the configuration
+* Easy to extend by using the Springfox classes
 
 ## Installation
 
