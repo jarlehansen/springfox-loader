@@ -9,7 +9,7 @@ get swagger up and running without the need for a lot of configuration.
 __Features:__
 * Annotation-based configuration
 * Support for standard Spring application-configuration in properties/yml files
-* Support for using Spring placeholder values ${...}  in the configuration
+* Support for using Spring placeholder values `${...}`  in the configuration
 * Easy to extend by using the Springfox classes
 
 
@@ -91,7 +91,7 @@ The _springEndpointsEnabled_ will display/hide the standard Spring endpoints, su
 
 ### Properties
 
-It is also possible to configure the values using properties/yml files (typically application.properties/application.yml).
+It is also possible to configure the values using properties/yml files (typically _application.properties_ / _application.yml_).
 On startup it will try to lookup the same configuration options as described above with 'springfox.' as a prefix.
 For example springfox.path.
 
