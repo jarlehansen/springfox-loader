@@ -13,6 +13,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Import({SpringfoxLoaderConfiguration.class, SpringfoxLoaderProps.class, Swagger2DocumentationConfiguration.class})
 public @interface EnableSpringfox {
-    String path() default "";
     Info value() default @Info(title = "", version = "");
+    String path() default "";
+    boolean springEndpointsEnabled() default true;
 }

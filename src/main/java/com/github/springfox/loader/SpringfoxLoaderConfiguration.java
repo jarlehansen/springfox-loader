@@ -13,6 +13,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
@@ -36,13 +37,13 @@ public class SpringfoxLoaderConfiguration implements ApplicationContextAware, Em
 
     @Bean
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework")))
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(apiInfo())
-                .pathMapping(springfoxLoader.getPath());
+        ApiSelectorBuilder apiSelectorBuilder = new Docket(DocumentationType.SWAGGER_2).select();
+        if (!springfoxLoader.springEndpointsEnabled()) {
+            apiSelectorBuilder.apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework")));
+        }
+
+        apiSelectorBuilder.paths(PathSelectors.any()).build().apiInfo(apiInfo()).pathMapping(springfoxLoader.getPath());
+        return apiSelectorBuilder.build();
     }
 
     private ApiInfo apiInfo() {

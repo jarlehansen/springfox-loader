@@ -84,4 +84,8 @@ class SpringfoxLoader {
         return ("".equals(prop)) ? annotation : prop;
     }
 
+    boolean springEndpointsEnabled() {
+        return annotation.springEndpointsEnabled();
+    }
+
 }
