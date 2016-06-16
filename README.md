@@ -59,6 +59,7 @@ _pom.xml_
 
 Add `@EnableSpringfox` to the class containing the Spring boot main method (`@SpringBootApplication`).
 This will automatically create the springfox configuration for you.
+
 The required values in the `@EnableSpringfox` is title and version (using `@Info`).
 
 It is also possible to add Spring placeholders (with the `${...}` syntax) as values in the EnableSpringfox-annotation.
