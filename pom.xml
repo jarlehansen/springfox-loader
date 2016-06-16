@@ -5,10 +5,8 @@
 
     <groupId>com.github.springfox.loader</groupId>
     <artifactId>springfox-loader</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <name>springfox-loader</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
