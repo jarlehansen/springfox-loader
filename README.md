@@ -71,7 +71,9 @@ This can be useful if you want to add values that are defined in for example pro
  ```
 
 ```java
-@EnableSpringfox(@Info(
+@EnableSpringfox(
+    springEndpointsEnabled = false,
+    value = @Info(
          title = "title",
          version = "version",
          description = "description",
@@ -80,6 +82,8 @@ This can be useful if you want to add values that are defined in for example pro
          license = @License(name = "name", url = "url"))
  )
 ```
+
+The _springEndpointsEnabled_ will display/hide the standard Spring endpoints, such as the endpoints added by [Spring actuator](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html).
 
 ### Properties
 
@@ -104,9 +108,9 @@ __Application properties__
 ### Swagger UI
 
 The swagger-ui dependency is already included by Springfox Loader.
-After enabling Springfox Loader you can access the webpage: http://localhost:8080__/swagger-ui.html__
+After enabling Springfox Loader you can access the webpage: http://localhost:8080/swagger-ui.html
 
-A list of the swagger resources are available here: http://localhost:8080__/swagger-resources__
+A list of the swagger resources are available here: http://localhost:8080/swagger-resources
 
 ### Custom options
 If there are options that are available in Springfox, but not the Springfox-loader it is possible to add it manually.
