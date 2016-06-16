@@ -10,7 +10,7 @@ __Features:__
 * Annotation-based configuration
 * Support for standard Spring application-configuration in properties/yml files
 * Support for using Spring placeholder values `${...}`  in the configuration
-* Easy to extend by using the Springfox classes
+* Easy to extend by using the standard Springfox classes
 
 
 ## Installation
