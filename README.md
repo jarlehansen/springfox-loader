@@ -74,12 +74,12 @@ This can be useful if you want to add values that are defined in for example pro
 @EnableSpringfox(
     springEndpointsEnabled = false,
     value = @Info(
-         title = "title",
-         version = "version",
-         description = "description",
-         termsOfService = "termsOfService",
-         contact = @Contact(name = "name", url = "url", email = "email"),
-         license = @License(name = "name", url = "url"))
+         title = "",
+         version = "",
+         description = "",
+         termsOfService = "",
+         contact = @Contact(name = "", url = "", email = ""),
+         license = @License(name = "", url = ""))
  )
 ```
 
