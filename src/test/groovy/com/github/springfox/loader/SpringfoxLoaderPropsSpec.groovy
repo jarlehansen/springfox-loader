@@ -6,7 +6,7 @@ class SpringfoxLoaderPropsSpec extends Specification {
 
     def "Get title with spring.application.name"() {
         given:
-        def loaderProps = new SpringfoxLoaderProps(name: "name")
+        def loaderProps = new SpringfoxLoaderProps(name: "name", title: "title")
 
         when:
         def title = loaderProps.getTitle()
