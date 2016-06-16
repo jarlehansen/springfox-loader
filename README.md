@@ -62,7 +62,7 @@ This will automatically create the springfox configuration for you.
 
 The required values in the `@EnableSpringfox` is title and version (using `@Info`).
 
-It is also possible to add Spring placeholders (with the `${...}` syntax) as values in the EnableSpringfox-annotation.
+It is also possible to add Spring placeholders (with the `${...}` syntax) as values in the annotation.
 This can be useful if you want to add values that are defined in for example properties/yml files.
 
  __Examples__
