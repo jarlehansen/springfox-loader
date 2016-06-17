@@ -16,6 +16,7 @@ __Features:__
 ## Installation
 
 The required springfox dependencies are included when you add the _Springfox Loader_ dependency.
+
 The jar-file is hosted in [JCenter](https://bintray.com/jarlehansen/maven/springfox-loader/)
 
 ### Gradle
