@@ -24,18 +24,19 @@ class SpringfoxLoaderSpec extends Specification {
     def "Get contact"() {
         given:
         def loaderProps = Mock(SpringfoxLoaderProps)
-        def annotation = Mock(EnableSpringfox)
-        def infoAnnotation = Mock(Info)
         def contactAnnotation = Mock(Contact)
+        def infoAnnotation = Mock(Info) {
+            contact() >> contactAnnotation
+        }
+        def annotation = Mock(EnableSpringfox) {
+            value() >> infoAnnotation
+        }
         def springfoxLoader = new SpringfoxLoader(loaderProps: loaderProps, annotation: annotation)
 
         when:
         def contact = springfoxLoader.getContact()
 
         then:
-        1 * annotation.value() >> infoAnnotation
-        1 * infoAnnotation.contact() >> contactAnnotation
-
         1 * contactAnnotation.name() >> ""
         1 * loaderProps.getContactName() >> "contact-name"
         1 * contactAnnotation.url() >> ""
