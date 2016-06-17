@@ -16,18 +16,11 @@ __Features:__
 ## Installation
 
 The required springfox dependencies are included when you add the _Springfox Loader_ dependency.
+The jar-file is hosted in [JCenter](https://bintray.com/jarlehansen/maven/springfox-loader/)
 
 ### Gradle
 
 _build.gradle_
-```groovy
-repositories {
-    maven {
-        url  "http://dl.bintray.com/jarlehansen/maven"
-    }
-}
-```
-
 ```groovy
 compile('com.github.springfox.loader:springfox-loader:0.0.5')
 ```
@@ -35,19 +28,6 @@ compile('com.github.springfox.loader:springfox-loader:0.0.5')
 ### Maven
 
 _pom.xml_
-```xml
-<repositories>
-    <repository>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-        <id>bintray-jarlehansen-maven</id>
-        <name>bintray</name>
-        <url>http://dl.bintray.com/jarlehansen/maven</url>
-    </repository>
-</repositories>
-```
-
 ```xml
 <dependency>
     <groupId>com.github.springfox.loader</groupId>
