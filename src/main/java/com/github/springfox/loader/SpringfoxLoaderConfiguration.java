@@ -39,7 +39,9 @@ public class SpringfoxLoaderConfiguration implements ApplicationContextAware, Em
     @Bean
     public Docket api() {
         ApiSelectorBuilder apiSelectorBuilder = new Docket(DocumentationType.SWAGGER_2).select();
-        if (!springfoxLoader.springEndpointsEnabled()) {
+        if (springfoxLoader.springEndpointsEnabled()) {
+            apiSelectorBuilder.apis(RequestHandlerSelectors.any());
+        } else {
             apiSelectorBuilder.apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework")));
         }
 
