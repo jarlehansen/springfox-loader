@@ -107,7 +107,7 @@ private Docket docket;
 
 @PostConstruct
 public void init() {
-    docket.apiInfo(new ApiInfo("My new title", "", "1.0.0.", "", new Contact("", "", ""), "", ""));
+    docket.apiInfo(new ApiInfo("My new title", "", "1.0.0", "", new Contact("", "", ""), "", ""));
 }
 ```
 
