@@ -1,5 +1,6 @@
 package com.github.springfox.loader;
 
+import com.github.springfox.loader.plugin.LoaderTagProvider;
 import com.google.common.base.Predicates;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.util.StringValueResolver;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -15,9 +17,10 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
 @Configuration
-public class SpringfoxLoaderConfiguration implements ApplicationContextAware, EmbeddedValueResolverAware {
+public class SpringfoxLoaderConfig implements ApplicationContextAware, EmbeddedValueResolverAware {
 
     private final SpringfoxLoader springfoxLoader = new SpringfoxLoader();
 
@@ -47,6 +50,12 @@ public class SpringfoxLoaderConfiguration implements ApplicationContextAware, Em
 
         apiSelectorBuilder.paths(PathSelectors.any()).build().apiInfo(apiInfo()).pathMapping(springfoxLoader.getPath());
         return apiSelectorBuilder.build();
+    }
+
+    @Bean
+    @Primary
+    public DefaultTagsProvider loaderDefaultTagsProvider() {
+        return new LoaderTagProvider(springfoxLoader.simplifiedTags());
     }
 
     private ApiInfo apiInfo() {
