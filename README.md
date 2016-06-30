@@ -48,13 +48,15 @@ It is also possible to add Spring placeholders (with the `${...}` syntax) as val
 This can be useful if you want to add values that are defined in for example properties/yml files.
 In the example below the value `${version}` can be added in for example the application.properties-file
 
- __Examples__
+ __Minimal example__
  ```java
 @EnableSpringfox(
         @Info(title = "title", version = "${version}")
 )
  ```
 
+
+__Full example__
 ```java
 @EnableSpringfox(
     conventionMode = false,
@@ -69,8 +71,10 @@ In the example below the value `${version}` can be added in for example the appl
  )
 ```
 
-* The _conventionMode_ will alter the tags (the name of the groups). It will remove  _Controller_ at the end of the string. It will also split the operation name by replacing camelcase with space and uppercasing the word.
-* The _springEndpointsEnabled_ will display/hide the standard Spring endpoints, such as the endpoints added by [Spring actuator](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html).
+* Use __conventionMode__ to print better names on the swagger-ui page. It will alter the tags (the name of the groups).
+It will remove  _Controller_ at the end of the text if it is present. Additionally, it will split the operation name by
+replacing camelcase with space and uppercasing the word. If the `@ApiOperation` annotation is present, these values will be used.
+* The __springEndpointsEnabled__ will display/hide the standard Spring endpoints, such as the endpoints added by [Spring actuator](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html).
 
 ### Properties
 

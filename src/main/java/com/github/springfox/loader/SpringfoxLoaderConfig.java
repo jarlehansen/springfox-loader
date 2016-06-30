@@ -1,10 +1,11 @@
 package com.github.springfox.loader;
 
-import com.github.springfox.loader.plugin.LoaderOperationPlugin;
-import com.github.springfox.loader.plugin.LoaderTagProvider;
+import com.github.springfox.loader.plugins.LoaderOperationPlugin;
+import com.github.springfox.loader.plugins.LoaderTagProvider;
 import com.google.common.base.Predicates;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EmbeddedValueResolverAware;
@@ -20,6 +21,7 @@ import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
+@EnableConfigurationProperties
 @Configuration
 public class SpringfoxLoaderConfig implements ApplicationContextAware, EmbeddedValueResolverAware {
 

@@ -1,4 +1,4 @@
-package com.github.springfox.loader.plugin;
+package com.github.springfox.loader.plugins;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.util.StringUtils;

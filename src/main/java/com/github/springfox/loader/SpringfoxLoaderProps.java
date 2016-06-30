@@ -1,43 +1,32 @@
 package com.github.springfox.loader;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
+@ConfigurationProperties(prefix = "springfox")
 public class SpringfoxLoaderProps {
 
-    @Value("${springfox.path:}")
-    private String path;
+    private String path = "";
 
-
-    @Value("${spring.application.name:}")
     private String name;
-    @Value("${springfox.title:}")
-    private String title;
+    private String title = "";
 
-    @Value("${springfox.description:}")
-    private String description;
+    private String description = "";
 
-    @Value("${springfox.version:}")
-    private String version;
+    private String version = "";
 
-    @Value("${springfox.terms-of-service-url:}")
-    private String termsOfServiceUrl;
+    private String termsOfServiceUrl = "";
 
-    @Value("${springfox.contact.name:}")
-    private String contactName;
+    private String contactName = "";
 
-    @Value("${springfox.contact.url:}")
-    private String contactUrl;
+    private String contactUrl = "";
 
-    @Value("${springfox.contact.email:}")
-    private String contactEmail;
+    private String contactEmail = "";
 
-    @Value("${springfox.license.name:}")
-    private String license;
+    private String license = "";
 
-    @Value("${springfox.license.url:}")
-    private String licenseUrl;
+    private String licenseUrl = "";
 
     public String getPath() {
         return path;

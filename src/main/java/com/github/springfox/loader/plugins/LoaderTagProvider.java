@@ -1,4 +1,4 @@
-package com.github.springfox.loader.plugin;
+package com.github.springfox.loader.plugins;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
