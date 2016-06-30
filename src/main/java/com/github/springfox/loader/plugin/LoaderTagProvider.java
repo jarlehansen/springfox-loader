@@ -8,15 +8,15 @@ import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
 
 public class LoaderTagProvider extends DefaultTagsProvider {
-    private final boolean simplifiedTags;
+    private final boolean conventionMode;
 
-    public LoaderTagProvider(boolean simplifiedTags) {
-        this.simplifiedTags = simplifiedTags;
+    public LoaderTagProvider(boolean conventionMode) {
+        this.conventionMode = conventionMode;
     }
 
     @Override
     public ImmutableSet<String> tags(OperationContext context) {
-        if (simplifiedTags) {
+        if (conventionMode) {
             String controllerName = ControllerNamingUtils.controllerNameAsGroup(context.getHandlerMethod());
             controllerName = controllerName.replace("-controller", "");
             return ImmutableSet.copyOf(Sets.newHashSet(new String[]{controllerName}));

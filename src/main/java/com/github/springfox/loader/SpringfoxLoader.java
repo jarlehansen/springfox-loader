@@ -85,8 +85,8 @@ class SpringfoxLoader {
         return annotation.springEndpointsEnabled();
     }
 
-    boolean simplifiedTags() {
-        return annotation.simplifiedDefaultTags();
+    boolean conventionMode() {
+        return annotation.conventionMode();
     }
 
 }

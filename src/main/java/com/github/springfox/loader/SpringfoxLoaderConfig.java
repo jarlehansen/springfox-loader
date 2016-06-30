@@ -1,5 +1,6 @@
 package com.github.springfox.loader;
 
+import com.github.springfox.loader.plugin.LoaderOperationPlugin;
 import com.github.springfox.loader.plugin.LoaderTagProvider;
 import com.google.common.base.Predicates;
 import org.springframework.beans.BeansException;
@@ -52,14 +53,20 @@ public class SpringfoxLoaderConfig implements ApplicationContextAware, EmbeddedV
         return apiSelectorBuilder.build();
     }
 
-    @Bean
-    @Primary
-    public DefaultTagsProvider loaderDefaultTagsProvider() {
-        return new LoaderTagProvider(springfoxLoader.simplifiedTags());
-    }
 
     private ApiInfo apiInfo() {
         return new ApiInfo(springfoxLoader.getTitle(), springfoxLoader.getDescription(), springfoxLoader.getVersion(),
                 springfoxLoader.getTermsOfServiceUrl(), springfoxLoader.getContact(), springfoxLoader.getLicense(), springfoxLoader.getLicenseUrl());
+    }
+
+    @Bean
+    @Primary
+    public DefaultTagsProvider loaderDefaultTagsProvider() {
+        return new LoaderTagProvider(springfoxLoader.conventionMode());
+    }
+
+    @Bean
+    public LoaderOperationPlugin loaderOperationPlugin() {
+        return new LoaderOperationPlugin(springfoxLoader.conventionMode());
     }
 }

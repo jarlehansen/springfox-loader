@@ -19,5 +19,5 @@ public @interface EnableSpringfox {
 
     boolean springEndpointsEnabled() default false;
 
-    boolean simplifiedDefaultTags() default true;
+    boolean conventionMode() default true;
 }
