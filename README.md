@@ -57,7 +57,8 @@ In the example below the value `${version}` can be added in for example the appl
 
 ```java
 @EnableSpringfox(
-    springEndpointsEnabled = false,
+    conventionMode = false,
+    springEndpointsEnabled = true,
     value = @Info(
          title = "",
          version = "",
@@ -68,7 +69,8 @@ In the example below the value `${version}` can be added in for example the appl
  )
 ```
 
-The _springEndpointsEnabled_ will display/hide the standard Spring endpoints, such as the endpoints added by [Spring actuator](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html).
+* The _conventionMode_ will alter the tags (the name of the groups). It will remove  _Controller_ at the end of the string. It will also split the operation name by replacing camelcase with space and uppercasing the word.
+* The _springEndpointsEnabled_ will display/hide the standard Spring endpoints, such as the endpoints added by [Spring actuator](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html).
 
 ### Properties
 
