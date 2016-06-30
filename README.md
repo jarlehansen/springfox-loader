@@ -97,7 +97,7 @@ If both the annotation values and properties values are defined the values from 
 
 __Application properties__
 * springfox.path
-* spring.application.name _or_ springfox.title
+* springfox.title _or_ spring.application.name
 * springfox.description
 * springfox.version
 * springfox.terms-of-service-url

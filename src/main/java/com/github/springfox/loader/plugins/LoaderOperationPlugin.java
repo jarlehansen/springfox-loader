@@ -8,7 +8,6 @@ import springfox.documentation.spi.service.contexts.OperationContext;
 import springfox.documentation.spring.web.paths.Paths;
 import springfox.documentation.swagger.common.SwaggerPluginSupport;
 
-
 @Order(SwaggerPluginSupport.SWAGGER_PLUGIN_ORDER)
 public class LoaderOperationPlugin implements OperationBuilderPlugin {
     private final boolean conventionMode;

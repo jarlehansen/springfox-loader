@@ -6,7 +6,6 @@ import springfox.documentation.spi.service.contexts.OperationContext;
 import springfox.documentation.spring.web.ControllerNamingUtils;
 import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
-
 public class LoaderTagProvider extends DefaultTagsProvider {
     private final boolean conventionMode;
 

@@ -28,6 +28,50 @@ public class SpringfoxLoaderProps {
 
     private String licenseUrl = "";
 
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public void setTermsOfServiceUrl(String termsOfServiceUrl) {
+        this.termsOfServiceUrl = termsOfServiceUrl;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public void setContactUrl(String contactUrl) {
+        this.contactUrl = contactUrl;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
+    }
+
+    public void setLicenseUrl(String licenseUrl) {
+        this.licenseUrl = licenseUrl;
+    }
+
     public String getPath() {
         return path;
     }

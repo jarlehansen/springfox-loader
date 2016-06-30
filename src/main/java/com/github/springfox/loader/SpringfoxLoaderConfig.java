@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.util.StringValueResolver;
@@ -23,6 +24,7 @@ import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
 @EnableConfigurationProperties
 @Configuration
+@ComponentScan(basePackageClasses = SpringfoxLoaderConfig.class)
 public class SpringfoxLoaderConfig implements ApplicationContextAware, EmbeddedValueResolverAware {
 
     private final SpringfoxLoader springfoxLoader = new SpringfoxLoader();
@@ -54,7 +56,6 @@ public class SpringfoxLoaderConfig implements ApplicationContextAware, EmbeddedV
         apiSelectorBuilder.paths(PathSelectors.any()).build().apiInfo(apiInfo()).pathMapping(springfoxLoader.getPath());
         return apiSelectorBuilder.build();
     }
-
 
     private ApiInfo apiInfo() {
         return new ApiInfo(springfoxLoader.getTitle(), springfoxLoader.getDescription(), springfoxLoader.getVersion(),

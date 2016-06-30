@@ -45,7 +45,7 @@ class SpringfoxLoader {
         String annotationTitle = annotation.value().title();
         String loaderTitle = loaderProps.getTitle();
         if (isEmpty(annotationTitle) && isEmpty(loaderTitle)) {
-            throw new IllegalArgumentException("Missing property title in Springfox configuration");
+            throw new IllegalArgumentException("Missing property springfox.title (or spring.application.name)");
         }
 
         return val(annotation.value().title(), loaderProps.getTitle());
@@ -55,7 +55,7 @@ class SpringfoxLoader {
         String annotationVersion = annotation.value().version();
         String loaderVersion = loaderProps.getVersion();
         if (isEmpty(annotationVersion) && isEmpty(loaderVersion)) {
-            throw new IllegalArgumentException("Missing property version in Springfox configuration");
+            throw new IllegalArgumentException("Missing property springfox.version");
         }
 
         return val(annotation.value().version(), loaderProps.getVersion());
