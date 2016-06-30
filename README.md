@@ -11,6 +11,7 @@ __Features:__
 * Support for standard Spring application-configuration in properties/yml files
 * Support for using Spring placeholder values `${...}`  in the configuration
 * Easy to extend by using the standard Springfox classes
+* Convention based naming of values displayed in swagger-ui, minimizing the need for manual configuration
 
 
 ## Installation
