@@ -42,18 +42,29 @@ _pom.xml_
 Add `@EnableSpringfox` to the class containing the Spring boot main method (`@SpringBootApplication`).
 This will automatically create the springfox configuration for you.
 
-The required values in the `@EnableSpringfox` is title and version (using `@Info`).
+The required values in the `@EnableSpringfox` is title and version. You can set these values either by using `@Info` or
+with the properties _springfox.title_ and _springfox.version_.
 
 It is also possible to add Spring placeholders (with the `${...}` syntax) as values in the annotation.
 This can be useful if you want to add values that are defined in for example properties/yml files.
 In the example below the value `${version}` can be added in for example the application.properties-file
 
- __Minimal example__
+ __Minimal examples__
  ```java
 @EnableSpringfox(
         @Info(title = "title", version = "${version}")
 )
  ```
+
+_or_
+```
+springfox.title=my-app
+springfox.version=1.0.0
+```
+
+```java
+@EnableSpringfox
+```
 
 
 __Full example__

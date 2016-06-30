@@ -72,4 +72,38 @@ class SpringfoxLoaderSpec extends Specification {
         then:
         val == "test"
     }
+
+    def "Missing title"() {
+        given:
+        def info = Mock(Info) {
+            title() >> ""
+        }
+        def enableSpringfox = Mock(EnableSpringfox) {
+            value() >> info
+        }
+        def springfoxLoader = new SpringfoxLoader(annotation: enableSpringfox, loaderProps: new SpringfoxLoaderProps())
+
+        when:
+        springfoxLoader.getVersion()
+
+        then:
+        thrown IllegalArgumentException
+    }
+
+    def "Missing version"() {
+        given:
+        def info = Mock(Info) {
+            version() >> ""
+        }
+        def enableSpringfox = Mock(EnableSpringfox) {
+            value() >> info
+        }
+        def springfoxLoader = new SpringfoxLoader(annotation: enableSpringfox, loaderProps: new SpringfoxLoaderProps())
+
+        when:
+        springfoxLoader.getVersion()
+
+        then:
+        thrown IllegalArgumentException
+    }
 }

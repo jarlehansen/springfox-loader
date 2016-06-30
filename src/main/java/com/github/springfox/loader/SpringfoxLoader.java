@@ -8,6 +8,8 @@ import springfox.documentation.service.Contact;
 
 import java.util.Map;
 
+import static org.springframework.util.StringUtils.isEmpty;
+
 class SpringfoxLoader {
     private SpringfoxLoaderProps loaderProps;
     private EnableSpringfox annotation;
@@ -40,15 +42,27 @@ class SpringfoxLoader {
     }
 
     String getTitle() {
+        String annotationTitle = annotation.value().title();
+        String loaderTitle = loaderProps.getTitle();
+        if (isEmpty(annotationTitle) && isEmpty(loaderTitle)) {
+            throw new IllegalArgumentException("Missing property title in Springfox configuration");
+        }
+
         return val(annotation.value().title(), loaderProps.getTitle());
+    }
+
+    String getVersion() {
+        String annotationVersion = annotation.value().version();
+        String loaderVersion = loaderProps.getVersion();
+        if (isEmpty(annotationVersion) && isEmpty(loaderVersion)) {
+            throw new IllegalArgumentException("Missing property version in Springfox configuration");
+        }
+
+        return val(annotation.value().version(), loaderProps.getVersion());
     }
 
     String getDescription() {
         return val(annotation.value().description(), loaderProps.getDescription());
-    }
-
-    String getVersion() {
-        return val(annotation.value().version(), loaderProps.getVersion());
     }
 
     String getTermsOfServiceUrl() {
