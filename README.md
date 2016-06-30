@@ -56,7 +56,7 @@ In the example below the value `${version}` can be added in for example the appl
 )
  ```
 
-_or_
+_or add configuration properties_
 ```
 springfox.title=my-app
 springfox.version=1.0.0
