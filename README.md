@@ -85,7 +85,8 @@ __Full example__
 
 * Use __conventionMode__ to print better names on the swagger-ui page. It will alter the tags (the name of the groups).
 It will remove  _Controller_ at the end of the text if it is present. Additionally, it will split the operation name by
-replacing camelcase with space and uppercasing the word. If the `@ApiOperation` annotation is present, these values will be used.
+replacing camelcase with space and uppercasing the word (for example the method `getCustomer()` will be displayed as `Get customer`).
+If the `@ApiOperation` annotation is present, these values will be used.
 * The __springEndpointsEnabled__ will display/hide the standard Spring endpoints, such as the endpoints added by [Spring actuator](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html).
 
 ### Properties
