@@ -15,14 +15,14 @@ __Features:__
 
 _Content:__
 
-* [Installation](#Installation)
-..* [Gradle](#Gradle)
-..* [Maven](#Maven)
-* [Usage](#Usage)
-..* [Properties](#Properties)
-..* [Swagger UI](#Swagger%UI)
-..* [Custom options](#Custom%options)
-..* [References](#References)
+* [Installation](#installation)
+ * [Gradle](#gradle)
+ * [Maven](#maven)
+* [Usage](#usage)
+ * [Properties](#properties)
+ * [Swagger UI](#swagger-ui)
+ * [Custom options](#custom-options)
+ * [References](#references)
 
 ## Installation
 
