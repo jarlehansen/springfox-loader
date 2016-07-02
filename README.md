@@ -13,8 +13,6 @@ __Features:__
 * Easy to extend by using the standard Springfox classes
 * Convention based naming of values displayed in swagger-ui, minimizing the need for manual configuration
 
-__Content:__
-
 * [Installation](#installation)
  * [Gradle](#gradle)
  * [Maven](#maven)
