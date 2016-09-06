@@ -2,12 +2,10 @@ package com.github.springfox.loader
 
 import com.github.springfox.loader.testutils.TestApplication
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.SpringApplicationConfiguration
-import org.springframework.boot.test.WebIntegrationTest
+import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
-@SpringApplicationConfiguration(TestApplication)
-@WebIntegrationTest(randomPort = true)
+@SpringBootTest(classes =  TestApplication, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class SpringfoxLoaderConfigSpec extends Specification {
 
     @Autowired
