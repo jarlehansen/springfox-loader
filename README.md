@@ -34,7 +34,7 @@ The jar-file available in [JCenter](https://bintray.com/jarlehansen/maven/spring
 
 _build.gradle_
 ```groovy
-compile('com.github.springfox.loader:springfox-loader:0.0.10')
+compile('com.github.springfox.loader:springfox-loader:0.0.11')
 ```
 
 ### Maven
@@ -118,7 +118,7 @@ __Application properties__
 * springfox.contact.email
 * springfox.license.name
 * springfox.license.url
-* springfox.activeProfiles - Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles.
+* springfox.activeProfiles - _Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles._
 
 ### Swagger UI
 
