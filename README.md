@@ -44,7 +44,7 @@ _pom.xml_
 <dependency>
     <groupId>com.github.springfox.loader</groupId>
     <artifactId>springfox-loader</artifactId>
-    <version>0.0.10</version>
+    <version>0.0.11</version>
 </dependency>
 ```
 
