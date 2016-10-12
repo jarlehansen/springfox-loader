@@ -10,6 +10,6 @@ public class ActiveProfilesCondition implements Condition {
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         Environment environment = conditionContext.getEnvironment();
         String[] profiles = environment.getProperty("springfox.activeProfiles", String[].class);
-        return profiles.length == 0 || environment.acceptsProfiles(profiles);
+        return profiles == null || profiles.length == 0 || environment.acceptsProfiles(profiles);
     }
 }
