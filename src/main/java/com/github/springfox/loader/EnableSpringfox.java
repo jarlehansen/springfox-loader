@@ -20,6 +20,4 @@ public @interface EnableSpringfox {
     boolean springEndpointsEnabled() default false;
 
     boolean conventionMode() default true;
-
-    String activeProfiles() default "";
 }

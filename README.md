@@ -118,6 +118,7 @@ __Application properties__
 * springfox.contact.email
 * springfox.license.name
 * springfox.license.url
+* springfox.activeProfiles - Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles.
 
 ### Swagger UI
 

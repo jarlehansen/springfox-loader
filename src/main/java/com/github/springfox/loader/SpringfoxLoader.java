@@ -103,8 +103,4 @@ class SpringfoxLoader {
         return annotation.conventionMode();
     }
 
-    String getActiveProfiles() {
-        return annotation.activeProfiles();
-    }
-
 }
