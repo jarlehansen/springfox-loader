@@ -18,6 +18,9 @@ class SpringfoxLoaderConfigSpec extends Specification {
     @Autowired
     private SpringfoxLoaderProps loaderProps
 
+    @Autowired
+    private SpringfoxLoaderConfig springfoxLoaderConfig
+
     @Autowired(required = false)
     private Docket docket
 
@@ -37,5 +40,14 @@ class SpringfoxLoaderConfigSpec extends Specification {
 
         then:
         enabled
+    }
+
+    def "Get base package"() {
+        when:
+        def propertiesLocator = springfoxLoaderConfig.valuePropertiesLocator()
+
+        then:
+        propertiesLocator.properties[0].key == "test.property"
+        propertiesLocator.properties[0].defaultValue == "test123"
     }
 }

@@ -34,7 +34,7 @@ The jar-file available in [JCenter](https://bintray.com/jarlehansen/maven/spring
 
 _build.gradle_
 ```groovy
-compile('com.github.springfox.loader:springfox-loader:0.0.14')
+compile('com.github.springfox.loader:springfox-loader:0.1.0')
 ```
 
 ### Maven
@@ -44,7 +44,7 @@ _pom.xml_
 <dependency>
     <groupId>com.github.springfox.loader</groupId>
     <artifactId>springfox-loader</artifactId>
-    <version>0.0.14</version>
+    <version>0.1.0</version>
 </dependency>
 ```
 
@@ -82,7 +82,6 @@ __Full example__
 ```java
 @EnableSpringfox(
     conventionMode = false,
-    springEndpointsEnabled = true,
     value = @Info(
          title = "",
          version = "",
@@ -97,7 +96,7 @@ __Full example__
 It will remove  _Controller_ at the end of the text if it is present. Additionally, it will split the operation name by
 replacing camelcase with space and uppercasing the word (for example the method `getCustomer()` will be displayed as `Get customer`).
 If the `@ApiOperation` annotation is present, these values will be used.
-* The __springEndpointsEnabled__ will display/hide the standard Spring endpoints, such as the endpoints added by [Spring actuator](http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html).
+* __ listValueProps__ is used to enable an endpoint that will display all the @Value annotations (key and default value) used in the application. The endpoint is displayed in swagger-ui as 'Value-properties'. By default this is disabled.
 
 ### Properties
 

@@ -10,6 +10,7 @@ public class SpringfoxLoaderProps {
     private String path = "";
 
     private String name;
+
     private String title = "";
 
     private String description = "";

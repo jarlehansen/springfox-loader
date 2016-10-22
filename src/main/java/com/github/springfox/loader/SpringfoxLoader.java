@@ -12,6 +12,7 @@ import static org.springframework.util.StringUtils.isEmpty;
 
 class SpringfoxLoader {
     private SpringfoxLoaderProps loaderProps;
+    private String packageName;
     private EnableSpringfox annotation;
     private StringValueResolver stringValueResolver;
 
@@ -21,20 +22,30 @@ class SpringfoxLoader {
 
     void setApplicationContext(ApplicationContext applicationContext) {
         this.annotation = getAnnotation(applicationContext);
+        this.packageName = getPackageName(applicationContext);
     }
 
     void setStringValueResolver(StringValueResolver stringValueResolver) {
         this.stringValueResolver = stringValueResolver;
     }
 
-    EnableSpringfox getAnnotation(ApplicationContext applicationContext) {
+    private Object getBeanWithAnnotation(ApplicationContext applicationContext) {
         Map<String, Object> beans = applicationContext.getBeansWithAnnotation(EnableSpringfox.class);
         if (beans.size() == 1) {
-            Object bean = beans.values().iterator().next();
-            return AnnotationUtils.findAnnotation(bean.getClass(), EnableSpringfox.class);
+            return beans.values().iterator().next();
         } else {
             throw new IllegalStateException("Expected to find 1 @EnableSpringfox annotation, but found " + beans.size());
         }
+    }
+
+    String getPackageName(ApplicationContext applicationContext) {
+        Object bean = getBeanWithAnnotation(applicationContext);
+        return bean.getClass().getPackage().getName();
+    }
+
+    EnableSpringfox getAnnotation(ApplicationContext applicationContext) {
+        Object bean = getBeanWithAnnotation(applicationContext);
+        return AnnotationUtils.findAnnotation(bean.getClass(), EnableSpringfox.class);
     }
 
     String getPath() {
@@ -95,12 +106,15 @@ class SpringfoxLoader {
         return ("".equals(prop)) ? annotation : prop;
     }
 
-    boolean springEndpointsEnabled() {
-        return annotation.springEndpointsEnabled();
-    }
-
     boolean conventionMode() {
         return annotation.conventionMode();
     }
 
+    boolean listValueProps() {
+        return annotation.listValueProps();
+    }
+
+    String getBasePackage() {
+        return packageName;
+    }
 }

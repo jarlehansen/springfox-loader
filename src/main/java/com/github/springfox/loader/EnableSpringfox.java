@@ -17,7 +17,8 @@ public @interface EnableSpringfox {
 
     String path() default "";
 
-    boolean springEndpointsEnabled() default false;
-
     boolean conventionMode() default true;
+
+    boolean listValueProps() default false;
+
 }
