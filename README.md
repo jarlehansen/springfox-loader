@@ -83,6 +83,7 @@ __Full example__
 ```java
 @EnableSpringfox(
     conventionMode = false,
+    listValueProps = true,
     value = @Info(
          title = "",
          version = "",
