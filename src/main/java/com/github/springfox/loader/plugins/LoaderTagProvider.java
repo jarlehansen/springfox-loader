@@ -17,7 +17,7 @@ public class LoaderTagProvider extends DefaultTagsProvider {
     @Override
     public ImmutableSet<String> tags(OperationContext context) {
         if (conventionMode) {
-            String controllerName = ControllerNamingUtils.controllerNameAsGroup(context.getHandlerMethod());
+            String controllerName = context.getGroupName();
             controllerName = controllerName.replace("-controller", "");
             return ImmutableSet.copyOf(Sets.newHashSet(StringUtils.capitalize(controllerName)));
         } else {

@@ -35,7 +35,7 @@ The jar-file available in [JCenter](https://bintray.com/jarlehansen/maven/spring
 
 _build.gradle_
 ```groovy
-compile('com.github.springfox.loader:springfox-loader:0.1.0')
+compile('com.github.springfox.loader:springfox-loader:0.1.1')
 ```
 
 ### Maven
@@ -45,7 +45,7 @@ _pom.xml_
 <dependency>
     <groupId>com.github.springfox.loader</groupId>
     <artifactId>springfox-loader</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
