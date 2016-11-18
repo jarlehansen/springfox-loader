@@ -13,7 +13,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.context.annotation.*;
+import org.springframework.util.StringUtils;
 import org.springframework.util.StringValueResolver;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -28,7 +32,7 @@ import javax.annotation.PostConstruct;
 @EnableConfigurationProperties
 @Configuration
 @ComponentScan(basePackageClasses = SpringfoxLoaderConfig.class)
-public class SpringfoxLoaderConfig implements ApplicationContextAware, EmbeddedValueResolverAware {
+public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware, EmbeddedValueResolverAware {
 
     @Autowired
     private ValuePropertiesController valuePropertiesController;
@@ -63,7 +67,6 @@ public class SpringfoxLoaderConfig implements ApplicationContextAware, EmbeddedV
     @Conditional(ActiveProfilesCondition.class)
     public Docket api() {
         ApiSelectorBuilder apiSelectorBuilder = new Docket(DocumentationType.SWAGGER_2).select();
-
         Predicate<RequestHandler> predicate = RequestHandlerSelectors.basePackage(springfoxLoader.getBasePackage());
         Predicate<RequestHandler> listPropertiesRequestHandler = RequestHandlerSelectors.basePackage(ValuePropertiesController.class.getPackage().getName());
         if (springfoxLoader.listValueProps()) {
@@ -95,5 +98,27 @@ public class SpringfoxLoaderConfig implements ApplicationContextAware, EmbeddedV
 
     ValuePropertiesLocator valuePropertiesLocator() {
         return valuePropertiesLocator;
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        if (!StringUtils.isEmpty(springfoxLoader.swaggerUiBasePath())) {
+            registry.addRedirectViewController(resourcePath("/v2/api-docs"), "/v2/api-docs");
+            registry.addRedirectViewController(resourcePath("/swagger-resources/configuration/ui"), "/swagger-resources/configuration/ui");
+            registry.addRedirectViewController(resourcePath("/swagger-resources/configuration/security"), "/swagger-resources/configuration/security");
+            registry.addRedirectViewController(resourcePath("/swagger-resources"), "/swagger-resources");
+        }
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        if (!StringUtils.isEmpty(springfoxLoader.swaggerUiBasePath())) {
+            registry.addResourceHandler(resourcePath("/swagger-ui.html**")).addResourceLocations("classpath:/META-INF/resources/swagger-ui.html");
+            registry.addResourceHandler(resourcePath("/webjars/**")).addResourceLocations("classpath:/META-INF/resources/webjars/");
+        }
+    }
+
+    private String resourcePath(String path) {
+        return springfoxLoader.swaggerUiBasePath() + path;
     }
 }

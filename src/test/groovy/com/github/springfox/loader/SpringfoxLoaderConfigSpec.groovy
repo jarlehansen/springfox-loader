@@ -3,7 +3,9 @@ package com.github.springfox.loader
 import com.github.springfox.loader.testutils.TestApplication
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.core.env.ConfigurableEnvironment
+import org.springframework.http.HttpStatus
 import org.springframework.test.context.ActiveProfiles
 import spock.lang.Specification
 import springfox.documentation.spring.web.plugins.Docket
@@ -23,6 +25,9 @@ class SpringfoxLoaderConfigSpec extends Specification {
 
     @Autowired(required = false)
     private Docket docket
+
+    @Autowired
+    private TestRestTemplate restTemplate
 
     def "Initialize properties"() {
         when:
@@ -49,5 +54,13 @@ class SpringfoxLoaderConfigSpec extends Specification {
         then:
         propertiesLocator.properties[0].key == "test.property"
         propertiesLocator.properties[0].defaultValue == "test123"
+    }
+
+    def "Custom base path for swagger-ui"() {
+        when:
+        def response = restTemplate.getForEntity("/docs/swagger-ui.html", String)
+
+        then:
+        response.statusCode == HttpStatus.OK
     }
 }

@@ -35,7 +35,7 @@ The jar-file available in [JCenter](https://bintray.com/jarlehansen/maven/spring
 
 _build.gradle_
 ```groovy
-compile('com.github.springfox.loader:springfox-loader:0.1.1')
+compile('com.github.springfox.loader:springfox-loader:0.1.2')
 ```
 
 ### Maven
@@ -45,7 +45,7 @@ _pom.xml_
 <dependency>
     <groupId>com.github.springfox.loader</groupId>
     <artifactId>springfox-loader</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 </dependency>
 ```
 
@@ -84,6 +84,7 @@ __Full example__
 @EnableSpringfox(
     conventionMode = false,
     listValueProps = true,
+    swaggerUiBasePath = "",
     value = @Info(
          title = "",
          version = "",
@@ -99,6 +100,7 @@ It will remove  _Controller_ at the end of the text if it is present. Additional
 replacing camelcase with space and uppercasing the word (for example the method `getCustomer()` will be displayed as `Get customer`).
 If the `@ApiOperation` annotation is present, these values will be used.
 * __listValueProps__ is used to enable an endpoint that will display all the `@Value`-annotations (key and default value) used in the application. The endpoint is displayed in swagger-ui as 'Value-properties'. By default this is disabled.
+* __swaggerUiBasePath__ customize the base path to swagger-ui. If for example the value is '/documentation', the path to swagger-ui will be '/documentation/swagger-ui.html'.
 
 ### Properties
 
@@ -120,11 +122,13 @@ __Application properties__
 * springfox.license.name
 * springfox.license.url
 * springfox.activeProfiles - _Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles._
+* springfox.swagger-ui-base-path
 
 ### Swagger UI
 
 The swagger-ui dependency is already included by Springfox Loader.
-After enabling Springfox Loader you can access the webpage: http://localhost:8080/swagger-ui.html
+After enabling Springfox Loader you can access the webpage: http://localhost:8080/swagger-ui.html  
+The base path to swagger-ui can be customized with the `springfox.swagger-ui-base-path`.
 
 A list of the swagger resources are available here: http://localhost:8080/swagger-resources
 

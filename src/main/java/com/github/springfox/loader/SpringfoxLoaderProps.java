@@ -29,6 +29,8 @@ public class SpringfoxLoaderProps {
 
     private String licenseUrl = "";
 
+    private String swaggerUiBasePath = "";
+
     public void setPath(String path) {
         this.path = path;
     }
@@ -73,6 +75,10 @@ public class SpringfoxLoaderProps {
         this.licenseUrl = licenseUrl;
     }
 
+    public void setSwaggerUiBasePath(String swaggerUiBasePath) {
+        this.swaggerUiBasePath = swaggerUiBasePath;
+    }
+
     public String getPath() {
         return path;
     }
@@ -115,5 +121,9 @@ public class SpringfoxLoaderProps {
 
     public String getLicenseUrl() {
         return licenseUrl;
+    }
+
+    public String getSwaggerUiBasePath() {
+        return swaggerUiBasePath;
     }
 }

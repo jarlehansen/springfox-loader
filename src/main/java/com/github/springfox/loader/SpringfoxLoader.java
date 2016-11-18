@@ -98,14 +98,6 @@ class SpringfoxLoader {
         return val(license.url(), loaderProps.getLicenseUrl());
     }
 
-    String val(String annotation, String prop) {
-        if (annotation.matches("\\$\\{(.+)\\}")) {
-            annotation = stringValueResolver.resolveStringValue(annotation);
-        }
-
-        return ("".equals(prop)) ? annotation : prop;
-    }
-
     boolean conventionMode() {
         return annotation.conventionMode();
     }
@@ -114,7 +106,19 @@ class SpringfoxLoader {
         return annotation.listValueProps();
     }
 
+    String swaggerUiBasePath() {
+        return val(annotation.swaggerUiBasePath(), loaderProps.getSwaggerUiBasePath());
+    }
+
     String getBasePackage() {
         return packageName;
+    }
+
+    String val(String annotation, String prop) {
+        if (annotation.matches("\\$\\{(.+)\\}")) {
+            annotation = stringValueResolver.resolveStringValue(annotation);
+        }
+
+        return ("".equals(prop)) ? annotation : prop;
     }
 }

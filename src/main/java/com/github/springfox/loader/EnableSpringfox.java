@@ -17,6 +17,8 @@ public @interface EnableSpringfox {
 
     String path() default "";
 
+    String swaggerUiBasePath() default "";
+
     boolean conventionMode() default true;
 
     boolean listValueProps() default false;
