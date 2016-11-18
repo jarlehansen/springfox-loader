@@ -100,7 +100,7 @@ It will remove  _Controller_ at the end of the text if it is present. Additional
 replacing camelcase with space and uppercasing the word (for example the method `getCustomer()` will be displayed as `Get customer`).
 If the `@ApiOperation` annotation is present, these values will be used.
 * __listValueProps__ is used to enable an endpoint that will display all the `@Value`-annotations (key and default value) used in the application. The endpoint is displayed in swagger-ui as 'Value-properties'. By default this is disabled.
-* __swaggerUiBasePath__ customize the base path to swagger-ui. If for example the value is '/documentation', the path to swagger-ui will be '/documentation/swagger-ui.html'.
+* __swaggerUiBasePath__ customize the base path to swagger-ui. If the value is for example '/documentation', the path to swagger-ui will be '/documentation/swagger-ui.html'.
 
 ### Properties
 
