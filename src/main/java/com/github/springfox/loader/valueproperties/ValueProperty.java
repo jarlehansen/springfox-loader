@@ -9,14 +9,13 @@ public class ValueProperty {
     }
 
     private void populateProperties(String annotationValue) {
-        annotationValue = annotationValue.replace("${", "");
-        annotationValue = annotationValue.replace("}", "");
-        if (annotationValue.contains(":")) {
-            int index = annotationValue.indexOf(":");
-            key = annotationValue.substring(0, index);
-            defaultValue = annotationValue.substring(index + 1);
+        String annotation = annotationValue.replace("${", "").replace("}", "");
+        if (annotation.contains(":")) {
+            int index = annotation.indexOf(":");
+            key = annotation.substring(0, index);
+            defaultValue = annotation.substring(index + 1);
         } else {
-            key = annotationValue;
+            key = annotation;
         }
     }
 

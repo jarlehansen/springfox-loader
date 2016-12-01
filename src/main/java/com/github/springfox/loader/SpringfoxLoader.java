@@ -115,10 +115,11 @@ class SpringfoxLoader {
     }
 
     String val(String annotation, String prop) {
+        String annotationValue = annotation;
         if (annotation.matches("\\$\\{(.+)\\}")) {
-            annotation = stringValueResolver.resolveStringValue(annotation);
+            annotationValue = stringValueResolver.resolveStringValue(annotation);
         }
 
-        return ("".equals(prop)) ? annotation : prop;
+        return ("".equals(prop)) ? annotationValue : prop;
     }
 }

@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import org.springframework.util.StringUtils;
 import springfox.documentation.spi.service.contexts.OperationContext;
-import springfox.documentation.spring.web.ControllerNamingUtils;
 import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
 public class LoaderTagProvider extends DefaultTagsProvider {
