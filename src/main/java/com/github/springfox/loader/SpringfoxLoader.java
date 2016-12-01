@@ -116,7 +116,7 @@ class SpringfoxLoader {
 
     String val(String annotation, String prop) {
         String annotationValue = annotation;
-        if (annotation.matches("\\$\\{(.+)\\}")) {
+        if (annotation.matches("\\$\\{(.+)}")) {
             annotationValue = stringValueResolver.resolveStringValue(annotation);
         }
 
