@@ -36,7 +36,7 @@ The jar-file available in [JCenter](https://bintray.com/jarlehansen/maven/spring
 
 _build.gradle_
 ```groovy
-compile('com.github.springfox.loader:springfox-loader:0.1.2')
+compile('com.github.springfox.loader:springfox-loader:1.0.0')
 ```
 
 ### Maven
