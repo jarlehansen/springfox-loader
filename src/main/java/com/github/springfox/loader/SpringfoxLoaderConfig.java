@@ -4,8 +4,6 @@ import com.github.springfox.loader.plugins.LoaderOperationPlugin;
 import com.github.springfox.loader.plugins.LoaderTagProvider;
 import com.github.springfox.loader.valueproperties.ValuePropertiesController;
 import com.github.springfox.loader.valueproperties.ValuePropertiesLocator;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -28,6 +26,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
 import javax.annotation.PostConstruct;
+import java.util.function.Predicate;
 
 @EnableConfigurationProperties
 @Configuration
@@ -67,12 +66,21 @@ public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements Ap
     @Conditional(ActiveProfilesCondition.class)
     public Docket api() {
         ApiSelectorBuilder apiSelectorBuilder = new Docket(DocumentationType.SWAGGER_2).select();
-        Predicate<RequestHandler> predicate = RequestHandlerSelectors.basePackage(springfoxLoader.getBasePackage());
-        Predicate<RequestHandler> listPropertiesRequestHandler = RequestHandlerSelectors.basePackage(ValuePropertiesController.class.getPackage().getName());
+        Predicate<RequestHandler> predicate = RequestHandlerSelectors.basePackage(springfoxLoader.getBasePackage())::apply;
         if (springfoxLoader.listValueProps()) {
-            predicate = Predicates.or(predicate, listPropertiesRequestHandler);
+            Predicate<RequestHandler> listPropertiesRequestHandler = RequestHandlerSelectors.basePackage(ValuePropertiesController.class.getPackage().getName())::apply;
+            predicate = predicate.or(listPropertiesRequestHandler);
         }
-        apiSelectorBuilder.apis(predicate);
+
+        if (springfoxLoader.includeControllers().length > 0) {
+            Class<?>[] controllers = springfoxLoader.includeControllers();
+            for (Class<?> controller : controllers) {
+                Predicate<RequestHandler> listPropertiesRequestHandler = RequestHandlerSelectors.basePackage(controller.getName())::apply;
+                predicate = predicate.or(listPropertiesRequestHandler);
+            }
+        }
+
+        apiSelectorBuilder.apis(predicate::test);
 
         apiSelectorBuilder.paths(PathSelectors.any()).build().apiInfo(apiInfo()).pathMapping(springfoxLoader.getPath());
         return apiSelectorBuilder.build();

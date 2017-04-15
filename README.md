@@ -87,6 +87,7 @@ __Full example__
     conventionMode = false,
     listValueProps = true,
     swaggerUiBasePath = "",
+    includeControllers = MyController.class,    
     value = @Info(
          title = "",
          version = "",
@@ -103,6 +104,7 @@ replacing camelcase with space and uppercasing the word (for example the method 
 If the `@ApiOperation` annotation is present, these values will be used.
 * __listValueProps__ is used to enable an endpoint that will display all the `@Value`-annotations (key and default value) used in the application. The endpoint is displayed in swagger-ui as 'Value-properties'. By default this is disabled.
 * __swaggerUiBasePath__ customize the base path to swagger-ui. If the value is for example '/documentation', the path to swagger-ui will be '/documentation/swagger-ui.html'.
+* __includeControllers__ add controllers to the swagger configuration that is not registered in the default base package (base on the Application class).
 
 ### Properties
 

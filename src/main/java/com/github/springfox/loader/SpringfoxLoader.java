@@ -114,6 +114,10 @@ class SpringfoxLoader {
         return packageName;
     }
 
+    Class<?>[] includeControllers() {
+        return annotation.includeControllers();
+    }
+
     String val(String annotation, String prop) {
         String annotationValue = annotation;
         if (annotation.matches("\\$\\{(.+)}")) {
