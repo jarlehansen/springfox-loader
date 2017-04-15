@@ -84,7 +84,7 @@ class SpringfoxLoaderSpec extends Specification {
         def springfoxLoader = new SpringfoxLoader(annotation: enableSpringfox, loaderProps: new SpringfoxLoaderProps())
 
         when:
-        springfoxLoader.getVersion()
+        springfoxLoader.getTitle()
 
         then:
         thrown IllegalArgumentException
