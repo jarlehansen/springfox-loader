@@ -1,8 +1,7 @@
 # Springfox Loader
 
 [![Build Status](https://travis-ci.org/jarlehansen/springfox-loader.svg?branch=master)](https://travis-ci.org/jarlehansen/springfox-loader)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ff4c7fce4d9b41289f4752fc029d1dd6)](https://www.codacy.com/app/FINT/springfox-loader?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jarlehansen/springfox-loader&amp;utm_campaign=Badge_Grade)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/ff4c7fce4d9b41289f4752fc029d1dd6)](https://www.codacy.com/app/FINT/springfox-loader?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jarlehansen/springfox-loader&amp;utm_campaign=Badge_Coverage)
+[![Coverage Status](https://coveralls.io/repos/github/jarlehansen/springfox-loader/badge.svg?branch=master)](https://coveralls.io/github/jarlehansen/springfox-loader?branch=master)
 
 Simplifies the initialization of [Springfox](http://springfox.io/).
 It does not offer all the flexibility and configuration options available in Springfox, but is created to be a simple way to
