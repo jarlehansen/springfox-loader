@@ -75,8 +75,8 @@ public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements Ap
         if (springfoxLoader.includeControllers().length > 0) {
             Class<?>[] controllers = springfoxLoader.includeControllers();
             for (Class<?> controller : controllers) {
-                Predicate<RequestHandler> listPropertiesRequestHandler = RequestHandlerSelectors.basePackage(controller.getName())::apply;
-                predicate = predicate.or(listPropertiesRequestHandler);
+                Predicate<RequestHandler> includeControllerRequestHandler = RequestHandlerSelectors.basePackage(controller.getPackage().getName())::apply;
+                predicate = predicate.or(includeControllerRequestHandler);
             }
         }
 
