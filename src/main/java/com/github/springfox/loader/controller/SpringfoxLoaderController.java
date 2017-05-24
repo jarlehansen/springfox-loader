@@ -15,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponents;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
@@ -25,14 +24,12 @@ import java.io.IOException;
 @ConditionalOnProperty(value = SpringfoxLoaderProps.PROPS_SPRINGFOX_ENDPOINTS, havingValue = "true")
 public class SpringfoxLoaderController {
 
-    private RestTemplate restTemplate;
+    private RestTemplate restTemplate = new RestTemplate();
     private HttpHeaders headers;
 
-    @PostConstruct
-    public void init() {
+    public SpringfoxLoaderController() {
         headers = new HttpHeaders();
         headers.put(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, Lists.newArrayList("*"));
-        restTemplate = new RestTemplate();
     }
 
     @GetMapping("/api-docs")
