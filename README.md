@@ -126,7 +126,7 @@ __Application properties__
 * springfox.license.url
 * springfox.activeProfiles - _Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles._
 * springfox.swagger-ui-base-path
-* springfox.endpoints - _Enables springfox-loader endpoints, `/springfox-loader/api-docs`. Is [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) enabled._
+* springfox.endpoints - _Enables springfox-loader endpoints, see [Springfox loader endpoints](#springfox-loader-endpoints) for more details_
 
 ### Swagger UI
 
@@ -149,6 +149,13 @@ public void init() {
     docket.apiInfo(new ApiInfo("My new title", "", "1.0.0", "", new Contact("", "", ""), "", ""));
 }
 ```
+
+### Springfox loader endpoints
+
+`GET /springfox-loader/api-docs`
+ 
+ Returns the swagger api-docs with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) enabled.  
+ Also has the option to remove the tags from the json response by adding `?skipTags=true` as a query param.
 
 ### References
 * [Springfox Reference Documentation](http://springfox.github.io/springfox/docs/current/)
