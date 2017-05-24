@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "springfox")
 public class SpringfoxLoaderProps {
+    public static final String PROPS_SPRINGFOX_ENDPOINTS = "springfox.endpoints";
 
     private String path = "";
 

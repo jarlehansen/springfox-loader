@@ -46,7 +46,7 @@ _pom.xml_
 <dependency>
     <groupId>com.github.springfox.loader</groupId>
     <artifactId>springfox-loader</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -126,11 +126,12 @@ __Application properties__
 * springfox.license.url
 * springfox.activeProfiles - _Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles._
 * springfox.swagger-ui-base-path
+* springfox.endpoints - _Enables springfox-loader endpoints, `/springfox-loader/api-docs`. Is [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) enabled._
 
 ### Swagger UI
 
 The swagger-ui dependency is already included by Springfox Loader.
-After enabling Springfox Loader you can access the webpage: http://localhost:8080/swagger-ui.html  
+After enabling Springfox Loader you can access the webpage: `http://localhost:8080/swagger-ui.html`  
 The base path to swagger-ui can be customized with the `springfox.swagger-ui-base-path`.
 
 A list of the swagger resources are available here: http://localhost:8080/swagger-resources

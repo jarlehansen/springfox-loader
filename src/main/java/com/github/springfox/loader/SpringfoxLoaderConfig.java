@@ -26,6 +26,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 import java.util.function.Predicate;
 
 @EnableConfigurationProperties
@@ -88,7 +89,7 @@ public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements Ap
 
     private ApiInfo apiInfo() {
         return new ApiInfo(springfoxLoader.getTitle(), springfoxLoader.getDescription(), springfoxLoader.getVersion(),
-                springfoxLoader.getTermsOfServiceUrl(), springfoxLoader.getContact(), springfoxLoader.getLicense(), springfoxLoader.getLicenseUrl());
+                springfoxLoader.getTermsOfServiceUrl(), springfoxLoader.getContact(), springfoxLoader.getLicense(), springfoxLoader.getLicenseUrl(), Collections.emptyList());
     }
 
     @Bean
