@@ -2,7 +2,6 @@ package com.github.springfox.loader.controller;
 
 import com.github.springfox.loader.SpringfoxLoaderProps;
 import com.google.common.collect.Lists;
-import com.jayway.jsonpath.JsonPath;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpEntity;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,15 +33,11 @@ public class SpringfoxLoaderController {
     }
 
     @GetMapping("/api-docs")
-    public ResponseEntity getApiDocs(HttpServletRequest request, @RequestParam(required = false) Boolean skipTags) throws IOException {
+    public ResponseEntity getApiDocs(HttpServletRequest request) throws IOException {
         UriComponents uri = ServletUriComponentsBuilder.fromServletMapping(request).path("/v2/api-docs").build();
         ResponseEntity<String> response = restTemplate.exchange(uri.toString(), HttpMethod.GET, new HttpEntity<>(null), String.class);
 
         String json = response.getBody();
-        if (skipTags != null && skipTags) {
-            json = JsonPath.parse(json).set("$.tags", new String[]{}).jsonString();
-        }
-
         return new ResponseEntity<>(json, headers, response.getStatusCode());
     }
 }

@@ -4,6 +4,8 @@ import com.github.springfox.loader.plugins.LoaderOperationPlugin;
 import com.github.springfox.loader.plugins.LoaderTagProvider;
 import com.github.springfox.loader.valueproperties.ValuePropertiesController;
 import com.github.springfox.loader.valueproperties.ValuePropertiesLocator;
+import io.swagger.annotations.Extension;
+import io.swagger.annotations.ExtensionProperty;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -20,14 +22,20 @@ import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ObjectVendorExtension;
+import springfox.documentation.service.StringVendorExtension;
+import springfox.documentation.service.VendorExtension;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @EnableConfigurationProperties
 @Configuration
@@ -89,7 +97,25 @@ public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements Ap
 
     private ApiInfo apiInfo() {
         return new ApiInfo(springfoxLoader.getTitle(), springfoxLoader.getDescription(), springfoxLoader.getVersion(),
-                springfoxLoader.getTermsOfServiceUrl(), springfoxLoader.getContact(), springfoxLoader.getLicense(), springfoxLoader.getLicenseUrl(), Collections.emptyList());
+                springfoxLoader.getTermsOfServiceUrl(), springfoxLoader.getContact(), springfoxLoader.getLicense(), springfoxLoader.getLicenseUrl(), getVendorExtensions());
+    }
+
+    private List<VendorExtension> getVendorExtensions() {
+        Extension[] extensions = springfoxLoader.extensions();
+        if (extensions.length == 1 && StringUtils.isEmpty(extensions[0].name())) {
+            return Collections.emptyList();
+        }
+
+        return Arrays.stream(extensions).map(extension -> {
+            ExtensionProperty[] extensionProperties = extension.properties();
+            List<StringVendorExtension> vendorExtensions = Arrays.stream(extensionProperties).map(property -> new StringVendorExtension(property.name(), property.value())).collect(Collectors.toList());
+
+            ObjectVendorExtension vendorExtension = new ObjectVendorExtension(extension.name());
+            for (StringVendorExtension stringVendorExtension : vendorExtensions) {
+                vendorExtension.addProperty(stringVendorExtension);
+            }
+            return vendorExtension;
+        }).collect(Collectors.toList());
     }
 
     @Bean

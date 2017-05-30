@@ -154,8 +154,7 @@ public void init() {
 
 `GET /springfox-loader/api-docs`
  
- Returns the swagger api-docs with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) enabled.  
- Also has the option to remove the tags from the json response by adding `?skipTags=true` as a query param.
+Returns the swagger api-docs with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) enabled.  
 
 ### References
 * [Springfox Reference Documentation](http://springfox.github.io/springfox/docs/current/)

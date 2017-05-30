@@ -1,5 +1,6 @@
 package com.github.springfox.loader;
 
+import io.swagger.annotations.Extension;
 import io.swagger.annotations.License;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -116,6 +117,10 @@ class SpringfoxLoader {
 
     Class<?>[] includeControllers() {
         return annotation.includeControllers();
+    }
+
+    Extension[] extensions() {
+        return annotation.value().extensions();
     }
 
     String val(String annotation, String prop) {
