@@ -91,8 +91,11 @@ __Full example__
          description = "",
          termsOfService = "",
          contact = @Contact(name = "", url = "", email = ""),
-         license = @License(name = "", url = ""))
- )
+         license = @License(name = "", url = ""),
+         extensions = @Extension(name = "x-test",
+            properties = @ExtensionProperty(name = "test-key", value = "test-value")
+         ))
+)
 ```
 
 * Use __conventionMode__ to print better names on the swagger-ui page. It will alter the tags (the name of the groups).
