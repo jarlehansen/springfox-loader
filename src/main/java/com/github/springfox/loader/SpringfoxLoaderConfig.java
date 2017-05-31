@@ -2,8 +2,6 @@ package com.github.springfox.loader;
 
 import com.github.springfox.loader.plugins.LoaderOperationPlugin;
 import com.github.springfox.loader.plugins.LoaderTagProvider;
-import com.github.springfox.loader.valueproperties.ValuePropertiesController;
-import com.github.springfox.loader.valueproperties.ValuePropertiesLocator;
 import io.swagger.annotations.Extension;
 import io.swagger.annotations.ExtensionProperty;
 import org.springframework.beans.BeansException;
@@ -30,7 +28,6 @@ import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
-import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -42,23 +39,11 @@ import java.util.stream.Collectors;
 @ComponentScan(basePackageClasses = SpringfoxLoaderConfig.class)
 public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware, EmbeddedValueResolverAware {
 
-    @Autowired
-    private ValuePropertiesController valuePropertiesController;
-
     private SpringfoxLoader springfoxLoader = new SpringfoxLoader();
-    private ValuePropertiesLocator valuePropertiesLocator;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         springfoxLoader.setApplicationContext(applicationContext);
-        if (springfoxLoader.listValueProps()) {
-            valuePropertiesLocator = new ValuePropertiesLocator(springfoxLoader.getBasePackage());
-        }
-    }
-
-    @PostConstruct
-    public void init() {
-        valuePropertiesController.setValuePropertiesLocator(valuePropertiesLocator);
     }
 
     @Override
@@ -76,11 +61,6 @@ public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements Ap
     public Docket api() {
         ApiSelectorBuilder apiSelectorBuilder = new Docket(DocumentationType.SWAGGER_2).select();
         Predicate<RequestHandler> predicate = RequestHandlerSelectors.basePackage(springfoxLoader.getBasePackage())::apply;
-        if (springfoxLoader.listValueProps()) {
-            Predicate<RequestHandler> listPropertiesRequestHandler = RequestHandlerSelectors.basePackage(ValuePropertiesController.class.getPackage().getName())::apply;
-            predicate = predicate.or(listPropertiesRequestHandler);
-        }
-
         if (springfoxLoader.includeControllers().length > 0) {
             Class<?>[] controllers = springfoxLoader.includeControllers();
             for (Class<?> controller : controllers) {
@@ -129,10 +109,6 @@ public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements Ap
     @Conditional(ActiveProfilesCondition.class)
     public LoaderOperationPlugin loaderOperationPlugin() {
         return new LoaderOperationPlugin(springfoxLoader.conventionMode());
-    }
-
-    ValuePropertiesLocator valuePropertiesLocator() {
-        return valuePropertiesLocator;
     }
 
     @Override

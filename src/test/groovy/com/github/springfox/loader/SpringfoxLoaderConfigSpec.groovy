@@ -47,15 +47,6 @@ class SpringfoxLoaderConfigSpec extends Specification {
         enabled
     }
 
-    def "Get base package"() {
-        when:
-        def propertiesLocator = springfoxLoaderConfig.valuePropertiesLocator()
-
-        then:
-        propertiesLocator.properties[0].key == "test.property"
-        propertiesLocator.properties[0].defaultValue == "test123"
-    }
-
     def "Custom base path for swagger-ui"() {
         when:
         def response = restTemplate.getForEntity("/docs/swagger-ui.html", String)

@@ -21,8 +21,6 @@ public @interface EnableSpringfox {
 
     boolean conventionMode() default true;
 
-    boolean listValueProps() default false;
-
     Class<?>[] includeControllers() default {};
 
 }
