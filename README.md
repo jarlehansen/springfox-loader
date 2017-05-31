@@ -13,7 +13,6 @@ __Features:__
 * Support for using Spring placeholder values `${...}`  in the configuration
 * Easy to extend by using the standard Springfox classes
 * Convention based naming of values displayed in swagger-ui, minimizing the need for manual configuration
-* Can display all the `@Value` annotations used, with the key and the default value
 
 ---
 
@@ -84,7 +83,6 @@ __Full example__
 ```java
 @EnableSpringfox(
     conventionMode = false,
-    listValueProps = true,
     swaggerUiBasePath = "",
     includeControllers = MyController.class,    
     value = @Info(
@@ -101,7 +99,6 @@ __Full example__
 It will remove  _Controller_ at the end of the text if it is present. Additionally, it will split the operation name by
 replacing camelcase with space and uppercasing the word (for example the method `getCustomer()` will be displayed as `Get customer`).
 If the `@ApiOperation` annotation is present, these values will be used.
-* __listValueProps__ is used to enable an endpoint that will display all the `@Value`-annotations (key and default value) used in the application. The endpoint is displayed in swagger-ui as 'Value-properties'. By default this is disabled.
 * __swaggerUiBasePath__ customize the base path to swagger-ui. If the value is for example '/documentation', the path to swagger-ui will be '/documentation/swagger-ui.html'.
 * __includeControllers__ add controllers to the swagger configuration that is not registered in the default base package (which is based on the Application class).
 
