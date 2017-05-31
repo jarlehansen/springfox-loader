@@ -13,7 +13,6 @@ __Features:__
 * Support for using Spring placeholder values `${...}`  in the configuration
 * Easy to extend by using the standard Springfox classes
 * Convention based naming of values displayed in swagger-ui, minimizing the need for manual configuration
-* Can display all the `@Value` annotations used, with the key and the default value
 
 ---
 
@@ -36,7 +35,7 @@ The jar-file available in [JCenter](https://bintray.com/jarlehansen/maven/spring
 
 _build.gradle_
 ```groovy
-compile('com.github.springfox.loader:springfox-loader:1.1.2')
+compile('com.github.springfox.loader:springfox-loader:1.2.0')
 ```
 
 ### Maven
@@ -84,7 +83,6 @@ __Full example__
 ```java
 @EnableSpringfox(
     conventionMode = false,
-    listValueProps = true,
     swaggerUiBasePath = "",
     includeControllers = MyController.class,    
     value = @Info(
@@ -93,15 +91,17 @@ __Full example__
          description = "",
          termsOfService = "",
          contact = @Contact(name = "", url = "", email = ""),
-         license = @License(name = "", url = ""))
- )
+         license = @License(name = "", url = ""),
+         extensions = @Extension(name = "x-test",
+            properties = @ExtensionProperty(name = "test-key", value = "test-value")
+         ))
+)
 ```
 
 * Use __conventionMode__ to print better names on the swagger-ui page. It will alter the tags (the name of the groups).
 It will remove  _Controller_ at the end of the text if it is present. Additionally, it will split the operation name by
 replacing camelcase with space and uppercasing the word (for example the method `getCustomer()` will be displayed as `Get customer`).
 If the `@ApiOperation` annotation is present, these values will be used.
-* __listValueProps__ is used to enable an endpoint that will display all the `@Value`-annotations (key and default value) used in the application. The endpoint is displayed in swagger-ui as 'Value-properties'. By default this is disabled.
 * __swaggerUiBasePath__ customize the base path to swagger-ui. If the value is for example '/documentation', the path to swagger-ui will be '/documentation/swagger-ui.html'.
 * __includeControllers__ add controllers to the swagger configuration that is not registered in the default base package (which is based on the Application class).
 
@@ -126,7 +126,6 @@ __Application properties__
 * springfox.license.url
 * springfox.activeProfiles - _Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles._
 * springfox.swagger-ui-base-path
-* springfox.endpoints - _Enables springfox-loader endpoints, see [Springfox loader endpoints](#springfox-loader-endpoints) for more details_
 
 ### Swagger UI
 
@@ -149,12 +148,6 @@ public void init() {
     docket.apiInfo(new ApiInfo("My new title", "", "1.0.0", "", new Contact("", "", ""), "", ""));
 }
 ```
-
-### Springfox loader endpoints
-
-`GET /springfox-loader/api-docs`
- 
-Returns the swagger api-docs with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) enabled.  
 
 ### References
 * [Springfox Reference Documentation](http://springfox.github.io/springfox/docs/current/)

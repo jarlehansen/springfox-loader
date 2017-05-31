@@ -1,9 +1,18 @@
 package com.github.springfox.loader.testutils;
 
 import com.github.springfox.loader.EnableSpringfox;
+import io.swagger.annotations.Extension;
+import io.swagger.annotations.ExtensionProperty;
+import io.swagger.annotations.Info;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@EnableSpringfox(listValueProps = true, swaggerUiBasePath = "/docs", includeControllers = TestController.class)
+@EnableSpringfox(
+        value = @Info(title = "test", version = "1.0.0",
+                extensions = @Extension(name = "x-test",
+                        properties = @ExtensionProperty(name = "test-key", value = "test-value")
+                )
+        ),
+        swaggerUiBasePath = "/docs", includeControllers = TestController.class)
 @SpringBootApplication
 public class TestApplication {
 }

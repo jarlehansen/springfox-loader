@@ -1,6 +1,7 @@
 package com.github.springfox.loader
 
 import com.github.springfox.loader.testutils.TestApplication
+import com.jayway.jsonpath.JsonPath
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
@@ -35,8 +36,8 @@ class SpringfoxLoaderConfigSpec extends Specification {
         def version = loaderProps.getVersion()
 
         then:
-        title == "test"
-        version == "1.0.0"
+        title == 'test'
+        version == '1.0.0'
     }
 
     def "Initialize with test profile"() {
@@ -47,18 +48,19 @@ class SpringfoxLoaderConfigSpec extends Specification {
         enabled
     }
 
-    def "Get base package"() {
+    def "GET api-docs with vendor extension"() {
         when:
-        def propertiesLocator = springfoxLoaderConfig.valuePropertiesLocator()
+        def response = restTemplate.getForEntity('/v2/api-docs', String)
+        def json = response.getBody()
 
         then:
-        propertiesLocator.properties[0].key == "test.property"
-        propertiesLocator.properties[0].defaultValue == "test123"
+        response.statusCode == HttpStatus.OK
+        JsonPath.read(json, '$.info.x-test.test-key') == 'test-value'
     }
 
     def "Custom base path for swagger-ui"() {
         when:
-        def response = restTemplate.getForEntity("/docs/swagger-ui.html", String)
+        def response = restTemplate.getForEntity('/docs/swagger-ui.html', String)
 
         then:
         response.statusCode == HttpStatus.OK

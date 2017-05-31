@@ -103,10 +103,6 @@ class SpringfoxLoader {
         return annotation.conventionMode();
     }
 
-    boolean listValueProps() {
-        return annotation.listValueProps();
-    }
-
     String swaggerUiBasePath() {
         return val(annotation.swaggerUiBasePath(), loaderProps.getSwaggerUiBasePath());
     }
