@@ -88,12 +88,10 @@ public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements Ap
 
         return Arrays.stream(extensions).map(extension -> {
             ExtensionProperty[] extensionProperties = extension.properties();
-            List<StringVendorExtension> vendorExtensions = Arrays.stream(extensionProperties).map(property -> new StringVendorExtension(property.name(), property.value())).collect(Collectors.toList());
-
+            List<StringVendorExtension> vendorExtensions = Arrays.stream(extensionProperties)
+                    .map(property -> new StringVendorExtension(property.name(), property.value())).collect(Collectors.toList());
             ObjectVendorExtension vendorExtension = new ObjectVendorExtension(extension.name());
-            for (StringVendorExtension stringVendorExtension : vendorExtensions) {
-                vendorExtension.addProperty(stringVendorExtension);
-            }
+            vendorExtensions.forEach(vendorExtension::addProperty);
             return vendorExtension;
         }).collect(Collectors.toList());
     }
