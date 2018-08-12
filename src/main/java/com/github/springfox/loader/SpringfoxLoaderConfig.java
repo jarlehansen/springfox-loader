@@ -15,7 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.util.StringValueResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -37,7 +37,7 @@ import java.util.stream.Collectors;
 @EnableConfigurationProperties
 @Configuration
 @ComponentScan(basePackageClasses = SpringfoxLoaderConfig.class)
-public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware, EmbeddedValueResolverAware {
+public class SpringfoxLoaderConfig implements WebMvcConfigurer, ApplicationContextAware, EmbeddedValueResolverAware {
 
     private SpringfoxLoader springfoxLoader = new SpringfoxLoader();
 
