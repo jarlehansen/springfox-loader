@@ -4,6 +4,7 @@ import com.github.springfox.loader.EnableSpringfox;
 import io.swagger.annotations.Extension;
 import io.swagger.annotations.ExtensionProperty;
 import io.swagger.annotations.Info;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableSpringfox(
@@ -15,4 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         swaggerUiBasePath = "/docs", includeControllers = TestController.class)
 @SpringBootApplication
 public class TestApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(TestApplication.class, args);
+    }
 }

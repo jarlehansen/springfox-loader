@@ -99,8 +99,8 @@ class SpringfoxLoader {
         return val(license.url(), loaderProps.getLicenseUrl());
     }
 
-    boolean conventionMode() {
-        return annotation.conventionMode();
+    boolean convention() {
+        return annotation.convention();
     }
 
     String swaggerUiBasePath() {

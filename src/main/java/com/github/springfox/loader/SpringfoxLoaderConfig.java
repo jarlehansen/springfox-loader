@@ -1,7 +1,6 @@
 package com.github.springfox.loader;
 
 import com.github.springfox.loader.plugins.LoaderOperationPlugin;
-import com.github.springfox.loader.plugins.LoaderTagProvider;
 import io.swagger.annotations.Extension;
 import io.swagger.annotations.ExtensionProperty;
 import org.springframework.beans.BeansException;
@@ -15,18 +14,14 @@ import org.springframework.util.StringUtils;
 import org.springframework.util.StringValueResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ObjectVendorExtension;
-import springfox.documentation.service.StringVendorExtension;
-import springfox.documentation.service.VendorExtension;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.spring.web.readers.operation.DefaultTagsProvider;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,7 +32,7 @@ import java.util.stream.Collectors;
 @EnableConfigurationProperties
 @Configuration
 @ComponentScan(basePackageClasses = SpringfoxLoaderConfig.class)
-public class SpringfoxLoaderConfig implements WebMvcConfigurer, ApplicationContextAware, EmbeddedValueResolverAware {
+public class SpringfoxLoaderConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware, EmbeddedValueResolverAware {
 
     private SpringfoxLoader springfoxLoader = new SpringfoxLoader();
 
@@ -97,16 +92,9 @@ public class SpringfoxLoaderConfig implements WebMvcConfigurer, ApplicationConte
     }
 
     @Bean
-    @Primary
-    @Conditional(ActiveProfilesCondition.class)
-    public DefaultTagsProvider loaderDefaultTagsProvider() {
-        return new LoaderTagProvider(springfoxLoader.conventionMode());
-    }
-
-    @Bean
     @Conditional(ActiveProfilesCondition.class)
     public LoaderOperationPlugin loaderOperationPlugin() {
-        return new LoaderOperationPlugin(springfoxLoader.conventionMode());
+        return new LoaderOperationPlugin(springfoxLoader.convention());
     }
 
     @Override

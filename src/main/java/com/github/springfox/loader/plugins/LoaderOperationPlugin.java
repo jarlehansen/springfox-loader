@@ -10,15 +10,15 @@ import springfox.documentation.swagger.common.SwaggerPluginSupport;
 
 @Order(SwaggerPluginSupport.SWAGGER_PLUGIN_ORDER)
 public class LoaderOperationPlugin implements OperationBuilderPlugin {
-    private final boolean conventionMode;
+    private final boolean convention;
 
-    public LoaderOperationPlugin(boolean conventionMode) {
-        this.conventionMode = conventionMode;
+    public LoaderOperationPlugin(boolean convention) {
+        this.convention = convention;
     }
 
     @Override
     public void apply(OperationContext operationContext) {
-        if (conventionMode) {
+        if (convention) {
             String summary = operationContext.operationBuilder().build().getSummary();
             String newSummary = Paths.splitCamelCase(summary, " ").toLowerCase();
             operationContext.operationBuilder().summary(StringUtils.capitalize(newSummary));

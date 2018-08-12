@@ -21,7 +21,7 @@ class LoaderOperationPluginSpec extends Specification {
         }
     }
 
-    def "Update summary when creating LoaderOperationPlugin with conventionMode enabled"() {
+    def "Update summary when creating LoaderOperationPlugin with convention enabled"() {
         when:
         def plugin = new LoaderOperationPlugin(true)
         plugin.apply(context)
@@ -30,7 +30,7 @@ class LoaderOperationPluginSpec extends Specification {
         1 * builder.summary('My test')
     }
 
-    def "Do not update summary when creating LoaderOperationPlugin with conventionMode disabled"() {
+    def "Do not update summary when creating LoaderOperationPlugin with convention disabled"() {
         when:
         def plugin = new LoaderOperationPlugin(false)
         plugin.apply(context)

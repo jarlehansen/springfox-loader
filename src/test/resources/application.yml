@@ -1,4 +1,8 @@
 springfox:
  title: test
  version: 1.0.0
- activeProfiles: dev,test
+ profiles: dev,test
+
+spring:
+ profiles:
+  active: test

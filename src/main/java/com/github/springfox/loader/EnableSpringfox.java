@@ -19,7 +19,7 @@ public @interface EnableSpringfox {
 
     String swaggerUiBasePath() default "";
 
-    boolean conventionMode() default true;
+    boolean convention() default true;
 
     Class<?>[] includeControllers() default {};
 

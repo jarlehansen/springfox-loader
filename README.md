@@ -82,7 +82,7 @@ springfox.version=1.0.0
 __Full example__
 ```java
 @EnableSpringfox(
-    conventionMode = false,
+    convention = false,
     swaggerUiBasePath = "",
     includeControllers = MyController.class,    
     value = @Info(
@@ -98,8 +98,7 @@ __Full example__
 )
 ```
 
-* Use __conventionMode__ to print better names on the swagger-ui page. It will alter the tags (the name of the groups).
-It will remove  _Controller_ at the end of the text if it is present. Additionally, it will split the operation name by
+* Use __convention__ to print better names on the swagger-ui page. It will split the operation name by
 replacing camelcase with space and uppercasing the word (for example the method `getCustomer()` will be displayed as `Get customer`).
 If the `@ApiOperation` annotation is present, these values will be used.
 * __swaggerUiBasePath__ customize the base path to swagger-ui. If the value is for example '/documentation', the path to swagger-ui will be '/documentation/swagger-ui.html'.
@@ -124,7 +123,7 @@ __Application properties__
 * springfox.contact.email
 * springfox.license.name
 * springfox.license.url
-* springfox.activeProfiles - _Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles._
+* springfox.profiles - _Enable springfox for the configured profiles. If not set, all profiles loads springfox. Default is all profiles._
 * springfox.swagger-ui-base-path
 
 ### Swagger UI
